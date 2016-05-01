@@ -2,6 +2,7 @@
 const Router = require('express').Router;
 const bodyParser = require('body-parser').json();
 const https = require('https');
+const errorHandler = require(__dirname + '/../lib/error_handler');
 
 var mealRouter = module.exports = exports = Router();
 var dataPath = 'https://data.seattle.gov/resource/47rs-c243.json';
@@ -14,7 +15,7 @@ mealRouter.get('/meals', bodyParser, (req, res) => {
     data.pipe(res);
 
   }).on('error', (err) => {
-    process.stderr.write('got this err: ' + err + '\n');
+    errorHandler(err, res, 500, 'Could not retrieve data');
   });
 });
 
@@ -26,7 +27,7 @@ mealRouter.get('/meals/breakfast', bodyParser, (req, res) => {
     data.pipe(res);
 
   }).on('error', (err) => {
-    process.stderr.write('got this err: ' + err + '\n');
+    errorHandler(err, res, 500, 'Could not retrieve data');
   });
 });
 
@@ -38,7 +39,7 @@ mealRouter.get('/meals/lunch', bodyParser, (req, res) => {
     data.pipe(res);
 
   }).on('error', (err) => {
-    process.stderr.write('got this err: ' + err + '\n');
+    errorHandler(err, res, 500, 'Could not retrieve data');
   });
 });
 
@@ -50,6 +51,6 @@ mealRouter.get('/meals/dinner', bodyParser, (req, res) => {
     data.pipe(res);
 
   }).on('error', (err) => {
-    process.stderr.write('got this err: ' + err + '\n');
+    errorHandler(err, res, 500, 'Could not retrieve data');
   });
 });

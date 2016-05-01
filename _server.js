@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mealRouter = require(__dirname + '/routes/meal_router');
+const errorHandler = require(__dirname + '/lib/error_handler');
 
 app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Welcome to Next-Meal' });
@@ -10,7 +11,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', mealRouter);
 app.use('/', (req, res) => {
-  res.status(404).json({ msg: '404 - Page Not Found' });
+  errorHandler(new Error('404 - Page Not Found'), res, 404);
 });
 
 module.exports = exports = function(port, mongoDbUri, cb) {
