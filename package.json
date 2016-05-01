@@ -1,7 +1,7 @@
 {
   "name": "next-meal",
   "version": "1.0.0",
-  "description": "meal finder for disadvantaged",
+  "description": "Meal finder for disadvantaged",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/**/*.js"
@@ -10,11 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/Next-Meal/next-meal.git"
   },
-  "author": "Mark Buchthal <mark.buchthal@gmail.com>",
+  "author": {
+    "name": "Mark Buchthal",
+    "email": "mark.buchthal@gmail.com"
+  },
   "contributors": [
-    "Hollis Lau <hollislau@hotmail.com>",
-    "David Zalk <>",
-    "Alex Hirt <>"
+    {
+      "name": "Mark Buchthal",
+      "email": "mark.buchthal@gmail.com"
+    },
+    {
+      "name": "Hollis Lau",
+      "email": "hollislau@hotmail.com"
+    },
+    {
+      "name": "David Zalk",
+      "email": "dzkjsn@gmail.com"
+    }
   ],
   "license": "MIT",
   "bugs": {
@@ -27,6 +39,7 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6",
     "mocha": "^2.4.5"
   },
   "dependencies": {

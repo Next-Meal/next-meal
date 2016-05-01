@@ -22,7 +22,7 @@ describe('server', () => {
     });
   });
 
-  it('should GET to localhost:5000', (done)=> {
+  it('should GET to localhost:5000', (done) => {
     request('localhost:5000')
     .get('/')
     .end((err, res) => {
