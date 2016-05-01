@@ -37,6 +37,7 @@
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
+    "dirty-chai": "^1.2.2",
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
