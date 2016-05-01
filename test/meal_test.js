@@ -28,6 +28,19 @@ describe('meals router', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
+      done();
+    });
+  });
+
+  it('should filter meals depending on ext name', (done) => {
+    request('localhost:' + port)
+    .get('/api/meals/breakfast')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res.status).to.eql(200);
+      expect(res.text).to.include('Breakfast');
+      expect(res.text).to.not.include('Dinner');
+      done();
     });
   });
 });
