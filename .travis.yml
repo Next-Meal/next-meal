@@ -3,6 +3,6 @@ node_js:
   - "4"
 before_script:
   - npm install -g gulp
-  - sleep 15
+  - sleep 10
 script: gulp
 services: mongodb
