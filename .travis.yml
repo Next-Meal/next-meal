@@ -12,3 +12,4 @@ deploy:
   app: next-meal
   on:
     repo: Next-Meal/next-meal
+    branch: heroku
