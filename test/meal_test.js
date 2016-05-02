@@ -34,17 +34,41 @@ describe('meals router', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
+      expect(Array.isArray(res.body)).to.eql(true);
+      expect(res.body.length).to.be.above(0);
       done();
     });
   });
 
-  it('should filter meals depending on ext name', (done) => {
+  it('should filter breakfast meals', (done) => {
     request('localhost:' + this.PORT)
     .get('/api/meals/breakfast')
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].meal_served).to.eql('Breakfast');
+      done();
+    });
+  });
+
+  it('should filter lunch meals', (done) => {
+    request('localhost:' + this.PORT)
+    .get('/api/meals/lunch')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.body[0].meal_served).to.eql('Lunch');
+      done();
+    });
+  });
+
+  it('should filter dinner meals', (done) => {
+    request('localhost:' + this.PORT)
+    .get('/api/meals/dinner')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.body[0].meal_served).to.eql('Dinner');
       done();
     });
   });
