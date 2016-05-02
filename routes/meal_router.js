@@ -1,56 +1,40 @@
 
 const Router = require('express').Router;
 const bodyParser = require('body-parser').json();
-const https = require('https');
 const errorHandler = require(__dirname + '/../lib/error_handler');
+const fs = require('fs');
+const location = require(__dirname + '/../models/location');
 
 var mealRouter = module.exports = exports = Router();
-var dataPath = 'https://data.seattle.gov/resource/47rs-c243.json';
 
-mealRouter.get('/meals', bodyParser, (req, res) => {
-  https.get(dataPath, (data) => {
-    console.log('status code: ' + data.statusCode);
-    console.log('headers: ' + data.headers);
+mealRouter.get('/meals', (req, res) => {
+  location.find(null, (err, data) => {
+    if (err) console.error(err);
 
-    data.pipe(res);
-
-  }).on('error', (err) => {
-    errorHandler(err, res, 500, 'Could not retrieve data');
+    res.status(200).json(data);
   });
 });
 
 mealRouter.get('/meals/breakfast', bodyParser, (req, res) => {
-  https.get(dataPath + '?meal_served=Breakfast', (data) => {
-    console.log('status code: ' + data.statusCode);
-    console.log('headers: ' + data.headers);
+  location.find({ meal_served: 'Breakfast' }, (err, data) => {
+    if (err) console.error(err);
 
-    data.pipe(res);
-
-  }).on('error', (err) => {
-    errorHandler(err, res, 500, 'Could not retrieve data');
+    res.status(200).json(data);
   });
 });
 
 mealRouter.get('/meals/lunch', bodyParser, (req, res) => {
-  https.get(dataPath + '?meal_served=Lunch', (data) => {
-    console.log('status code: ' + data.statusCode);
-    console.log('headers: ' + data.headers);
+  location.find({ meal_served: 'Lunch' }, (err, data) => {
+    if (err) console.error(err);
 
-    data.pipe(res);
-
-  }).on('error', (err) => {
-    errorHandler(err, res, 500, 'Could not retrieve data');
+    res.status(200).json(data);
   });
 });
 
 mealRouter.get('/meals/dinner', bodyParser, (req, res) => {
-  https.get(dataPath + '?meal_served=Dinner', (data) => {
-    console.log('status code: ' + data.statusCode);
-    console.log('headers: ' + data.headers);
+  location.find({ meal_served: 'Dinner' }, (err, data) => {
+    if (err) console.error(err);
 
-    data.pipe(res);
-
-  }).on('error', (err) => {
-    errorHandler(err, res, 500, 'Could not retrieve data');
+    res.status(200).json(data);
   });
 });
