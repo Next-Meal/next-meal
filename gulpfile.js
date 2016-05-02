@@ -13,7 +13,8 @@ gulp.task('lint', () => {
     .pipe(eslint({
       useEslintrc: true
     }))
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('test', () => {
