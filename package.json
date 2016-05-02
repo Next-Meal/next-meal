@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
-    "mongoose": "^4.4.14"
+    "mongoose": "^4.4.14",
+    "twilio": "^2.9.1"
   }
 }
