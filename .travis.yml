@@ -5,3 +5,11 @@ before_script:
   - npm install -g gulp
 script: gulp
 services: mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: LoQw+8GogMPubDMsS9TiGQQiiY4YT/4GIfbJdY91qlRZJy8TXt2cnIsoxbIyxqW1YtBpi1PK5eVmiAo5EmlWZLl2xojaIJkYvsT0haiz+GQgiEAlRyVIjAiCjhdN1fKR0gbqmzISxt/tJbcwWvH27WgyUVWVxk2BrqhGYXOVDwRH4kLPY0l7DvUo60HCIHZDBTPvGIujisW9Fnt0oJpvBciWRCyjJ/+3vIrSgg3Qwm7k3/W5KwO37vfouigN+oEViTEx7JJViTRiu8Vbjme3Nr7xUIVDNNWDChgIggWbJKGTolQbiLQqABaaU6f8jvTfN0B9R4+wT3sHInhwCSEsSeEm6ED/AJOt62zFrCGYQ9xEx87Oo9RjegbNxX0TEcdDTt5lnnRnC90mZl63hOaAkahr8EBT8E/N+qNTL8o5mRrTMQjJMGKF2Bx3C6/LA9hCJ+go3Mlb9JmI/EdjI2Qvbeg9X4RANaulStRpx4REW2I5SVI1998siK9Q3C29mAZDX3VZOaQrBefSsb/47TcKS6kLSOuE/rFd6KAiApVzF4h6HU4gfApO2+Nk10CglOEqTi9GWGzAHOgQyrNfqKbPFnAT+/HT8aqMH8V5c/49nA7MkIL7TCMmlGrE4TKTozF7FjfQhFMCrOfPieC3yiCPOtFxvGcm+kxMTS3pbrqsk8E=
+  app: next-meal
+  on:
+    repo: Next-Meal/next-meal
+    branch: heroku
