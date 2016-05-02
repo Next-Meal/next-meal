@@ -1,0 +1,58 @@
+{
+  "name": "next-meal",
+  "version": "0.1.0",
+  "description": "Meal finder for disadvantaged",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/**/*.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Next-Meal/next-meal.git"
+  },
+  "author": {
+    "name": "Mark Buchthal",
+    "email": "mark.buchthal@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Mark Buchthal",
+      "email": "mark.buchthal@gmail.com"
+    },
+    {
+      "name": "Hollis Lau",
+      "email": "hollislau@hotmail.com"
+    },
+    {
+      "name": "David Zalk",
+      "email": "dzkjsn@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Next-Meal/next-meal/issues"
+  },
+  "homepage": "https://github.com/Next-Meal/next-meal#readme",
+  "engines": {
+    "node": "^4.4.1",
+    "npm": "^2.14.20"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "dirty-chai": "^1.2.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "JSONStream": "^1.1.1",
+    "event-stream": "^3.3.2",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.14"
+  }
+}
