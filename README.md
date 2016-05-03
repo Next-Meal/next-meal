@@ -18,12 +18,17 @@ To get all current information, an http GET request can be made to:
 /api/meals
 ```
 
-Alternatively, specific meal information can be retrieved by specificying which meal the user is searching for:
+Alternatively, locations that serve specific meals or people can be retrieved:
 
 ```
 /api/meals/breakfast
 /api/meals/lunch
 /api/meals/dinner
+/api/meals/everyone
+/api/meals/men
+/api/meals/women
+/api/meals/youth
+/api/meals/children
 ```
 
 ### SMS Request
@@ -31,4 +36,3 @@ Alternatively, specific meal information can be retrieved by specificying which 
 Next-meal allows for information to be requested via SMS messaging. Next meal will receive SMS messaging and response with a filtered response.
 
 To receive a response {...}
-
