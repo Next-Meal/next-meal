@@ -6,11 +6,13 @@ const mealRouter = require(__dirname + '/routes/meal_router');
 const twilioRouter = require(__dirname + '/routes/twilio_router');
 const errorHandler = require(__dirname + '/lib/error_handler');
 const storeData = require(__dirname + '/lib/store_data');
+const usersInNeed = require(__dirname + '/routes/users_in_need_router');
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Next-Meal!');
 });
 
+app.use('/api', usersInNeed);
 app.use('/api', twilioRouter);
 app.use('/api', mealRouter);
 app.use('/', (req, res) => {
