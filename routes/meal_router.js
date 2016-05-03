@@ -18,7 +18,7 @@ mealRouter.get('/meals/:filter', (req, res) => {
     breakfast: { meal_served: 'Breakfast' },
     lunch: { meal_served: 'Lunch' },
     dinner: { meal_served: 'Dinner' },
-    all: { people_served: 'OPEN TO ALL' },
+    everyone: { people_served: 'OPEN TO ALL' },
     men: { people_served: /(^#.|[^o]|[^w]o)men/i },
     women: { people_served: /women/i },
     youth: { people_served: /youth/i },

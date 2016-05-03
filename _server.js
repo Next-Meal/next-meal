@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mealRouter = require(__dirname + '/routes/meal_router');
+const twilioRouter = require(__dirname + '/routes/twilio_router');
 const errorHandler = require(__dirname + '/lib/error_handler');
 const storeData = require(__dirname + '/lib/store_data');
-const twilioRouter = require(__dirname + '/routes/twiliorouter');
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Next-Meal!');
