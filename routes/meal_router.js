@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 const Router = require('express').Router;
-const bodyParser = require('body-parser').json();
 const errorHandler = require(__dirname + '/../lib/error_handler');
 const location = require(__dirname + '/../models/location');
 
@@ -14,26 +13,25 @@ mealRouter.get('/meals', (req, res) => {
   });
 });
 
-mealRouter.get('/meals/breakfast', bodyParser, (req, res) => {
-  location.find({ meal_served: 'Breakfast' }, (err, data) => {
-    if (err) return errorHandler(err, res, 500);
+mealRouter.get('/meals/:filter', (req, res) => {
+  var keyMap = {
+    breakfast: { meal_served: 'Breakfast' },
+    lunch: { meal_served: 'Lunch' },
+    dinner: { meal_served: 'Dinner' },
+    everyone: { people_served: 'OPEN TO ALL' },
+    men: { people_served: /(^#.|[^o]|[^w]o)men/i },
+    women: { people_served: /women/i },
+    youth: { people_served: /youth/i },
+    children: { people_served: /children/i }
+  };
 
-    res.status(200).json(data);
-  });
-});
+  if (keyMap[req.params.filter]) {
+    return location.find(keyMap[req.params.filter], (err, data) => {
+      if (err) return errorHandler(err, res, 500);
 
-mealRouter.get('/meals/lunch', bodyParser, (req, res) => {
-  location.find({ meal_served: 'Lunch' }, (err, data) => {
-    if (err) return errorHandler(err, res, 500);
+      res.status(200).json(data);
+    });
+  }
 
-    res.status(200).json(data);
-  });
-});
-
-mealRouter.get('/meals/dinner', bodyParser, (req, res) => {
-  location.find({ meal_served: 'Dinner' }, (err, data) => {
-    if (err) return errorHandler(err, res, 500);
-
-    res.status(200).json(data);
-  });
+  errorHandler(new Error('404 - Page Not Found'), res, 404);
 });
