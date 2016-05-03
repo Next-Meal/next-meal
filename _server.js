@@ -7,7 +7,7 @@ const errorHandler = require(__dirname + '/lib/error_handler');
 const storeData = require(__dirname + '/lib/store_data');
 
 app.get('/', (req, res) => {
-  res.status(200).json({ msg: 'Welcome to Next-Meal' });
+  res.status(200).send('Welcome to Next-Meal!');
 });
 
 app.use('/api', mealRouter);
