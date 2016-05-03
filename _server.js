@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mealRouter = require(__dirname + '/routes/meal_router');
+const twilioRouter = require(__dirname + '/routes/twilio_router');
 const errorHandler = require(__dirname + '/lib/error_handler');
-const getData = require(__dirname + '/lib/get_data');
-const twilioRouter = require(__dirname + '/routes/twiliorouter');
+const storeData = require(__dirname + '/lib/store_data');
 
 app.get('/', (req, res) => {
-  res.status(200).json({ msg: 'Welcome to Next-Meal' });
+  res.status(200).send('Welcome to Next-Meal!');
 });
 
 app.use('/api', twilioRouter);
@@ -18,11 +18,9 @@ app.use('/', (req, res) => {
 });
 
 module.exports = exports = function(port, mongoDbUri, cb) {
-
   mongoose.connection.on('open', () => {
-    getData();
+    storeData();
   });
   mongoose.connect(mongoDbUri);
-
   return app.listen(port, cb);
 };

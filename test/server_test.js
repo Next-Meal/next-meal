@@ -34,7 +34,7 @@ describe('server', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.body.msg).to.eql('Welcome to Next-Meal');
+      expect(res.text).to.eql('Welcome to Next-Meal!');
       done();
     });
   });
@@ -45,7 +45,7 @@ describe('server', () => {
     .end((err, res) => {
       expect(err).to.exist();
       expect(res).to.have.status(404);
-      expect(res.body.msg).to.eql('404 - Page Not Found');
+      expect(res.text).to.eql('404 - Page Not Found');
       done();
     });
   });
