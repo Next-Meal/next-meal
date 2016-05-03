@@ -43,4 +43,4 @@ To receive a response:
 
   2. The text message should contain one of the meal filters above.  For example, one could text 'breakfast' and retrieve filtered locations serving breakfast.
 
-
+  3. When using SMS to obtain information, the application will filter results by the current day of the week.
