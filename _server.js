@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const mealRouter = require(__dirname + '/routes/meal_router');
 const errorHandler = require(__dirname + '/lib/error_handler');
-const getData = require(__dirname + '/lib/get_data');
+const storeData = require(__dirname + '/lib/store_data');
 
 app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Welcome to Next-Meal' });
@@ -16,11 +16,9 @@ app.use('/', (req, res) => {
 });
 
 module.exports = exports = function(port, mongoDbUri, cb) {
-
   mongoose.connection.on('open', () => {
-    getData();
+    storeData();
   });
   mongoose.connect(mongoDbUri);
-
   return app.listen(port, cb);
 };
