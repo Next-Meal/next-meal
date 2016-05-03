@@ -18,17 +18,29 @@ To get all current information, an http GET request can be made to:
 /api/meals
 ```
 
-Alternatively, specific meal information can be retrieved by specificying which meal the user is searching for:
+Alternatively, locations that serve specific meals or people can be retrieved.
+For example, retrieving 'breakfast' will return locations that server breakfast. Or retrieving 'women' will return locations that specifically serve women.  Below are the current routes with filtered information:
 
 ```
 /api/meals/breakfast
 /api/meals/lunch
 /api/meals/dinner
+/api/meals/everyone
+/api/meals/men
+/api/meals/women
+/api/meals/youth
+/api/meals/children
 ```
 
 ### SMS Request
 
 Next-meal allows for information to be requested via SMS messaging. Next meal will receive SMS messaging and response with a filtered response.
 
-To receive a response {...}
+To receive a response:
+
+  1. Send a SMS (text) message to the following phone number:
+        **425-276-6480**
+
+  2. The text message should contain one of the meal filters above.  For example, one could text 'breakfast' and retrieve filtered locations serving breakfast.
+
 
