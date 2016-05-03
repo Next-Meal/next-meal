@@ -39,7 +39,7 @@ Next-meal allows for information to be requested via SMS messaging. Next meal wi
 To receive a response:
 
   1. Send a SMS (text) message to the following phone number:
-        _425-276-6480_
+        **425-276-6480**
 
   2. The text message should contain one of the meal filters above.  For example, one could text 'breakfast' and retrieve filtered locations serving breakfast.
 
