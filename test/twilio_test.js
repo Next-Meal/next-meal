@@ -36,9 +36,12 @@ describe('twilio router filters', () => {
     var results1 = dayFilter.matchDay(testArray, 'sat');
     var results2 = dayFilter.matchDay(testArray, 'fri');
     var results3 = dayFilter.matchDay(testArray, 'notaday');
+    var results4 = dayFilter.getDaysOpen(testArray);
     expect(Array.isArray(dayFilter.matchDay(testArray, filteredDay))).to.eql(true);
     expect(results1.length).to.eql(0);
     expect(results2.length).to.eql(2);
     expect(results3.length).to.eql(0);
+    expect(Array.isArray(dayFilter.getDaysOpen(testArray))).to.eql(true);
+    expect(results4[0]).to.have.property('daysOpen');
   });
 });
