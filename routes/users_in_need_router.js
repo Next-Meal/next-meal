@@ -7,7 +7,6 @@ var TwimlResponse = require('twilio').TwimlResponse;
 var userInNeedRouter = module.exports = exports = Router();
 
 userInNeedRouter.get('/signup', (req, res) => {
-  console.log(req.query.From);
   var newUser = new UsersInNeed({ phone_number: req.query.From });
   newUser.save();
   var resp = new TwimlResponse();
