@@ -1,0 +1,11 @@
+#! /usr/bin/env node
+
+const mongoose = require('mongoose');
+const buildDb = require(__dirname + '/../lib/store_data');
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/next_meal';
+
+mongoose.connection.on('open', () => {
+  buildDb();
+});
+
+mongoose.connect(MONGODB_URI);

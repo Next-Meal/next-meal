@@ -4,6 +4,7 @@
   "description": "Meal finder for disadvantaged",
   "main": "index.js",
   "scripts": {
+    "build": "./bin/buildDb",
     "test": "./node_modules/mocha/bin/mocha test/**/*.js",
     "start": "node server.js"
   },
