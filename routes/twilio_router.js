@@ -2,10 +2,10 @@
 
 const Router = require('express').Router;
 const location = require(__dirname + '/../models/location');
+const TwimlResponse = require('twilio').TwimlResponse;
+const dayFilter = require(__dirname + '/../lib/day_filter');
 
-var TwimlResponse = require('twilio').TwimlResponse;
 var twilioRouter = module.exports = exports = Router();
-var dayFilter = require(__dirname + '/../lib/day_filter');
 
 twilioRouter.get('/sms', (req, res) => {
   if (!(req.query.Body === 'Breakfast' || 'Lunch' || 'Dinner')) {

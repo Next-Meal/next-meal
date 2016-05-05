@@ -4,8 +4,7 @@
 const Router = require('express').Router;
 const twilio = require('twilio');
 const location = require(__dirname + '/../models/location');
-
-var dayFilter = require(__dirname + '/../lib/day_filter');
+const dayFilter = require(__dirname + '/../lib/day_filter');
 
 var voiceRouter = module.exports = Router();
 
@@ -41,7 +40,8 @@ voiceRouter.get('/response', (req, res) => {
     lookupMeal = 'Dinner';
   }
   if (phoneResponse == 7) {
-    var songUrl = 'https://ia600805.us.archive.org/27/items/NeverGonnaGiveYouUp/jocofullinterview41.mp3';
+    var songUrl =
+      'https://ia600805.us.archive.org/27/items/NeverGonnaGiveYouUp/jocofullinterview41.mp3';
     var twiml = new twilio.TwimlResponse();
     twiml.play(songUrl);
     res.header('Content-Type', 'text/xml');
