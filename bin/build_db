@@ -5,7 +5,21 @@ const buildDb = require(__dirname + '/../lib/store_data');
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/next_meal';
 
 mongoose.connection.on('open', () => {
-  buildDb();
+  buildDb.getSourceData()
+    .then((srcDataArr) => {
+      return buildDb.checkDb(srcDataArr);
+    })
+    .then((srcDataArr) => {
+      return buildDb.getGeoData(srcDataArr);
+    })
+    .then((dataObj) => {
+      var zipData = buildDb.setZipCode(dataObj);
+
+      buildDb.saveDocs(zipData);
+    })
+    .catch((e) => {
+      buildDb.errorHandler(e);
+    });
 });
 
 mongoose.connect(MONGODB_URI);
