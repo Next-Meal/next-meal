@@ -7,7 +7,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/next_meal';
 mongoose.connection.on('open', () => {
   buildDb.getSourceData()
     .then((srcDataArr) => {
-      return buildDb.checkDb(srcDataArr);
+      return buildDb.dropCollection(srcDataArr);
     })
     .then((srcDataArr) => {
       return buildDb.getGeoData(srcDataArr);
