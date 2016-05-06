@@ -42,7 +42,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(Array.isArray(res.body)).to.eql(true);
-      expect(res.body.length).to.be.above(0);
+      expect(res.body.length).to.eql(77);
       done();
     });
   });
@@ -54,6 +54,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].meal_served).to.eql('Breakfast');
+      expect(res.body.length).to.eql(13);
       done();
     });
   });
@@ -65,6 +66,19 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].meal_served).to.eql('Lunch');
+      expect(res.body.length).to.eql(39);
+      done();
+    });
+  });
+
+  it('should filter locations for snacks', (done) => {
+    request('localhost:' + this.PORT)
+    .get('/api/meals/snack')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.body[0].meal_served).to.eql('Snack');
+      expect(res.body.length).to.eql(2);
       done();
     });
   });
@@ -76,6 +90,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].meal_served).to.eql('Dinner');
+      expect(res.body.length).to.eql(22);
       done();
     });
   });
@@ -86,7 +101,8 @@ describe('meals router', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.body[0].people_served).to.eql('OPEN TO ALL');
+      expect(res.body[0].people_served).to.match(/open to all/i);
+      expect(res.body.length).to.eql(50);
       done();
     });
   });
@@ -98,6 +114,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].people_served).to.match(/(^#.|[^o]|[^w]o)men/i);
+      expect(res.body.length).to.eql(3);
       done();
     });
   });
@@ -109,6 +126,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].people_served).to.match(/women/i);
+      expect(res.body.length).to.eql(7);
       done();
     });
   });
@@ -120,6 +138,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].people_served).to.match(/youth/i);
+      expect(res.body.length).to.eql(10);
       done();
     });
   });
@@ -131,6 +150,7 @@ describe('meals router', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.body[0].people_served).to.match(/children/i);
+      expect(res.body.length).to.eql(3);
       done();
     });
   });
