@@ -4,17 +4,25 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
+const fs = require('fs');
 const mongoose = require('mongoose');
+const location = require(__dirname + '/../models/location');
 const server = require(__dirname + '/../_server');
-const buildDb = require(__dirname + '/../lib/build_db');
 
 describe('meals router', () => {
   before((done) => {
+    var testData = JSON.parse(fs.readFileSync(__dirname + '/data/test_data.json'));
+
     this.portBackup = process.env.PORT;
     this.mongoUriBackup = process.env.MONGODB_URI;
     this.PORT = process.env.PORT = 5000;
     this.MONGODB_URI = process.env.MONGODB_URI = 'mongodb://localhost/next_meal_test';
-    this.server = server(this.PORT, this.MONGODB_URI, done);
+    this.server = server(this.PORT, this.MONGODB_URI, () => {
+      location.insertMany(testData, (err) => {
+        if (err) throw err;
+        done();
+      });
+    });
   });
 
   after((done) => {

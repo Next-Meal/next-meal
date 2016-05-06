@@ -26,6 +26,7 @@ describe('user router', () => {
       });
     });
   });
+
   it('should show instructions for signing up', (done) => {
     request('localhost:' + this.PORT)
     .get('/api/signup')
