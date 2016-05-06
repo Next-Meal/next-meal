@@ -6,7 +6,7 @@ const expect = chai.expect;
 const request = chai.request;
 const mongoose = require('mongoose');
 const server = require(__dirname + '/../_server');
-const buildDb = require(__dirname + '/../lib/store_data');
+const buildDb = require(__dirname + '/../lib/build_db');
 
 describe('meals router', () => {
   before((done) => {
@@ -14,9 +14,7 @@ describe('meals router', () => {
     this.mongoUriBackup = process.env.MONGODB_URI;
     this.PORT = process.env.PORT = 5000;
     this.MONGODB_URI = process.env.MONGODB_URI = 'mongodb://localhost/next_meal_test';
-    buildDb(3, () => {
-      this.server = server(this.PORT, this.MONGODB_URI, done);
-    });
+    this.server = server(this.PORT, this.MONGODB_URI, done);
   });
 
   after((done) => {
