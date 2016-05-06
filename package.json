@@ -4,6 +4,7 @@
   "description": "Meal finder for disadvantaged",
   "main": "index.js",
   "scripts": {
+    "build": "./bin/build_db",
     "test": "./node_modules/mocha/bin/mocha test/**/*.js",
     "start": "node server.js"
   },
@@ -49,8 +50,6 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
-    "JSONStream": "^1.1.1",
-    "event-stream": "^3.3.2",
     "express": "^4.13.4",
     "mongoose": "^4.4.14",
     "twilio": "^2.9.1"

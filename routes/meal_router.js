@@ -17,8 +17,9 @@ mealRouter.get('/meals/:filter', (req, res) => {
   var keyMap = {
     breakfast: { meal_served: 'Breakfast' },
     lunch: { meal_served: 'Lunch' },
+    snack: { meal_served: 'Snack' },
     dinner: { meal_served: 'Dinner' },
-    everyone: { people_served: 'OPEN TO ALL' },
+    everyone: { people_served: /open to all/i },
     men: { people_served: /(^#.|[^o]|[^w]o)men/i },
     women: { people_served: /women/i },
     youth: { people_served: /youth/i },
