@@ -12,9 +12,7 @@ describe('user router', () => {
     this.mongoUriBackup = process.env.MONGODB_URI;
     this.PORT = process.env.PORT = 5000;
     this.MONGODB_URI = process.env.MONGODB_URI = 'mongodb://localhost/next_meal_test';
-    this.server = server(this.PORT, this.MONGODB_URI, () => {
-      setTimeout(done, 1000);
-    });
+    this.server = server(this.PORT, this.MONGODB_URI, done);
   });
 
   after((done) => {
@@ -26,6 +24,7 @@ describe('user router', () => {
       });
     });
   });
+
   it('should show instructions for signing up', (done) => {
     request('localhost:' + this.PORT)
     .get('/api/signup')
