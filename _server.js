@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const mealRouter = require(__dirname + '/routes/meal_router');
 const twilioRouter = require(__dirname + '/routes/twilio_router');
 const errorHandler = require(__dirname + '/lib/error_handler');
-const storeData = require(__dirname + '/lib/store_data');
 const userRouter = require(__dirname + '/routes/user_router');
 const voiceRouter = require(__dirname + '/routes/voice_router');
 
@@ -23,9 +22,6 @@ app.use('/', (req, res) => {
 });
 
 module.exports = exports = function(port, mongoDbUri, cb) {
-  mongoose.connection.on('open', () => {
-    storeData();
-  });
   mongoose.connect(mongoDbUri);
   return app.listen(port, cb);
 };

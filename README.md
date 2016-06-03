@@ -24,6 +24,7 @@ For example, retrieving 'breakfast' will return locations that server breakfast.
 ```
 /api/meals/breakfast
 /api/meals/lunch
+/api/meals/snack
 /api/meals/dinner
 /api/meals/everyone
 /api/meals/men
