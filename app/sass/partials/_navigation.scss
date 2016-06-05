@@ -1,0 +1,86 @@
+/*- based on tutorial http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu -*/
+.nav_wrapper {
+  margin: 1em 0;
+  float: right;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+nav {
+  font-family: $font-text;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+}
+nav ul {
+  padding: 0 1.2em;
+  list-style: none;
+  position: relative;
+  display: inline-table;
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+  & ul {
+    display: none;
+  }
+  & li:hover > ul {
+    display: block;
+  }
+  li {
+    float: left;
+    &:hover {
+      a {
+        color: #000;
+        border-bottom: 3px $color-sub solid;
+      }
+    }
+    a {
+      border-bottom: 3px #fff solid;
+      color: black;
+      display: block;
+      padding: 0.75em 2em;
+      color: #757575;
+      text-decoration: none;
+      font-weight: 900;
+    }
+  }
+  ul {
+    border-radius: 0px;
+    border-bottom: 3px #fff;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    li {
+      float: none;
+      position: relative;
+      a {
+        padding: 1em 2em;
+        color: #fff;
+        &:hover {
+          background: lighten($color-sub, 30%);
+        }
+      }
+    }
+  }
+}
+.donate {
+  padding-left: 4em;
+  text-transform: uppercase;
+  background-color: $font-main;
+  a {
+    color: #fff;
+    font-family: $font-main;
+    text-decoration: capitalize;
+    background-color: $color-sub;
+    padding-left: 4em;
+  }
+}
+.submenu_li {
+  text-align: left;
+  width: 10em;
+  background-color: #fff;
+}

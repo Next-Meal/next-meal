@@ -1,0 +1,17 @@
+.welcome div {
+  background-image: url('../images/blue-header-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 32vw;
+  p {
+    font-family: $font-main;
+    font-size: 3vw;
+    color: #fff;
+    text-align: center;
+    &:first-child {
+      letter-spacing: 0.1em;
+      padding: 9vw 0 0.5vw;
+    }
+  }
+}
+
