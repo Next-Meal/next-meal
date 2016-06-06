@@ -56,7 +56,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('webpack:dev', ['lint'], () => {
+gulp.task('webpack:dev', () => {
   return gulp.src('app/js/entry.js')
     .pipe(webpack({
       devtool: 'source-map',
@@ -67,7 +67,7 @@ gulp.task('webpack:dev', ['lint'], () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('webpack:test', ['lint'], () => {
+gulp.task('webpack:test', () => {
   return gulp.src('test/unit/test_entry.js')
     .pipe(webpack({
       devtool: 'source-map',
@@ -126,5 +126,5 @@ gulp.task('watch', ['build'], () => {
 });
 
 gulp.task('lint', ['lint:test', 'lint:browser', 'lint:files']);
-gulp.task('build', ['lint', 'static:dev', 'sass']);
-gulp.task('default', ['lint', 'test']);
+gulp.task('build', ['static:dev', 'sass']);
+gulp.task('default', ['build', 'lint', 'test']);
