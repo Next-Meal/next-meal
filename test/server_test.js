@@ -28,24 +28,13 @@ describe('server', () => {
     });
   });
 
-  it('should greet users on a GET request to root', (done) => {
+  it('should send index on a GET request to root', (done) => {
     request('localhost:' + this.PORT)
     .get('/')
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql('Welcome to Next-Meal!');
-      done();
-    });
-  });
-
-  it('should return a 404 message on a bad route', (done) => {
-    request('localhost:' + this.PORT)
-    .get('/badroute')
-    .end((err, res) => {
-      expect(err).to.exist();
-      expect(res).to.have.status(404);
-      expect(res.text).to.eql('404 - Page Not Found');
+      expect(res.text).to.contain('<!DOCTYPE html>');
       done();
     });
   });
