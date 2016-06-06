@@ -1,0 +1,66 @@
+.welcome {
+  position: relative;
+  clear: both;
+  padding-top: 7em;
+  background-image: url('../images/blue-header-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40em;
+  p {
+    font-family: $font-main;
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+    &:first-child {
+      letter-spacing: 0.1em;
+      padding: 3em 0 0.5em;
+    }
+    @media only screen and (max-width: 900px) {
+      font-size: 2.5em;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    height: 28em;
+  }
+}
+
+// p{
+//   color: lime;
+//   font-size: 20px;
+//   margin: 10px 0 0 10px;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   width: 30em;
+//   animation: type 4s steps(60, end);
+// }
+
+// p:nth-child(2){
+//   animation: type2 8s steps(60, end);
+// }
+
+// p a{
+//   color: lime;
+//   text-decoration: none;
+// }
+
+// span{
+//   animation: blink 1s infinite;
+// }
+
+// @keyframes type{
+//   from { width: 0; }
+// }
+
+// @keyframes type2{
+//   0%{width: 0;}
+//   50%{width: 0;}
+//   100%{ width: 100; }
+// }
+
+// @keyframes blink{
+//   to{opacity: .0;}
+// }
+
+// ::selection{
+//   background: black;
+// }
