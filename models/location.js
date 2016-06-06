@@ -6,7 +6,9 @@ var locationSchema = new mongoose.Schema({
   location: { type: String },
   meal_served: { type: String },
   name_of_program: { type: String },
-  people_served: { type: String }
+  people_served: { type: String },
+  zip_code: { type: String },
+  daysOpen: { type: Object }
 });
 
 module.exports = exports = mongoose.model('location', locationSchema);
