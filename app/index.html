@@ -3,10 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <title>Next Meal</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <h1>Welcome to Next Meal</h1>
+<header class="nav_wrapper">
+<img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
+  <nav>
+    <a href="" id="menu-icon"></a>
+    <ul>
+      <li><a href="#">home</a></li>
+      <li><a href="#">about</a></li>
+      <li><a href="#">contact</a></li>
+      <li><a class="submenu_li" href="#">organizations</a>
+        <ul>
+          <li><a class="submenu_li" href="#">sign in</a></li>
+          <li><a class="submenu_li" href="#">sign out</a></li>
+        </ul>
+      </li>
+      <li><a class="donate" href="#">donate</a></li>
+    </ul>
+  </nav>
+</header>
+<div></div>
+<section class="welcome">
+  <div>
+    <p>text... locate... eat...</p><span>|</span>
+    <p>Next Meal</p>
+  </div>
+</section>
+
+<section class="location">
+  <ul>
+    <li>
+      <p>Find A Location</p>
+    </li>
+    <li>
+      <input type="text" placeholder="enter zip code">
+    </li>
+  </ul>
+</section>
+
+<section class="map">
+  <img src="../images/seattle-map2.png" alt="partial roadmap of downtown seattle">
+</section>
+
+<footer>
+  <ul>
+    <li class="logo_footer">
+      <img src="../images/Next-Meal-logo-50.svg" alt="logo">
+    </li>
+    <li class="site_map">
+      <p>Site Map</p>
+      <p>or</p>
+      <p>Contact Information</p>
+    </li>
+  </ul>
+</footer>
 
   <script src="./bundle.js"></script>
 </body>
 </html>
+<!--
+Welcome to Next Meal! We are a non-profit organization that brings together resources to better assist ongoing hunger needs in our communities.  1 in 7 Washingtonians relies on SNAP (food stamps), the Supplemental Nutrition Assistance Program, which is severely threatened by budget cuts. Half of all people on SNAP are kids. -->

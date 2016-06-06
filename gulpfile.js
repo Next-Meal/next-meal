@@ -10,11 +10,13 @@ const livereload = require('gulp-livereload');
 const protractor = require('gulp-protractor').protractor;
 const html = require('html-loader');
 const webpack = require('webpack-stream');
+const neat = require('node-neat').includePaths;
 
 var files = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js',
                  '_server.js', 'gulpfile.js', 'index.js', 'server.js'];
 var appFiles = 'app/**/*.js';
 var testFiles = 'test/**/*.js';
+var staticFiles = ['./app/**/*.html', './app/**/*.jpg', './app/**/*.svg', './app/**/*.png'];
 
 gulp.task('lint:files', () => {
   return gulp.src(files)
@@ -46,7 +48,9 @@ gulp.task('lint:test', () => {
 gulp.task('sass', () => {
   return gulp.src('./app/sass/**/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: ['sass'].concat(neat)
+    }).on('error', sass.logError))
     .pipe(cleanCSS())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./build'));
@@ -83,7 +87,7 @@ gulp.task('webpack:test', ['lint'], () => {
 });
 
 gulp.task('static:dev', () => {
-  return gulp.src('app/**/*html')
+  return gulp.src(staticFiles)
     .pipe(gulp.dest('./build'));
 });
 
@@ -122,5 +126,5 @@ gulp.task('watch', ['build'], () => {
 });
 
 gulp.task('lint', ['lint:test', 'lint:browser', 'lint:files']);
-gulp.task('build', ['lint', 'static:dev', 'webpack:dev', 'sass']);
+gulp.task('build', ['lint', 'static:dev', 'sass']);
 gulp.task('default', ['lint', 'test']);
