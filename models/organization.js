@@ -9,7 +9,7 @@ var organizationSchema = mongoose.Schema({
   phoneNumber: { type: String },
   address: { type: String },
   password: { type: String, required: true },
-  findHash: { type: String, unique: true }
+  findHash: { type: String }
 });
 organizationSchema.methods.generateHash = function(password) {
   return this.password = bcrypt.hashSync(password, 8);
