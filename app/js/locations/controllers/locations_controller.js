@@ -1,11 +1,11 @@
 var baseUrl = require('../../config').baseUrl;
-const angular = require('angular');
 
 module.exports = function(app) {
   app.controller('LocationsController', ['Resource', function(Resource) {
     this.locations = [];
     this.errors = [];
     this.master = {};
+    this.results = false;
     this.locationErrors = {
       getAll: 'could not get locations',
       update: 'could not update locations',
@@ -15,7 +15,13 @@ module.exports = function(app) {
     var remote = new Resource(this.locations, this.errors,
       baseUrl + '/api/meals', { errMessages: this.locationErrors });
 
-    this.getAll = remote.getAll.bind(remote);
+    this.getAll = function() {
+      remote.getAll()
+      .then(() => {
+        this.results = true;
+        console.log(this.locations);
+      });
+    }.bind(this);
 
     this.createLocation = function() {
       remote.create(this.newLocation)

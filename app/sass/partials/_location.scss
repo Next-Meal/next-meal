@@ -1,24 +1,31 @@
 .location {
   font-family: $font-text;
-  font-size: 1.5em;
+  font-size: 2.5em;
   color: $color-sub;
+  padding-left: 1.5em;
   ul {
     @include display(flex);
-    @include justify-content(start);
+    // @include justify-content(space-around);
     @include flex-direction(row);
-    padding: 2vw 0;
+    @include align-items(center);
+    padding: 1.25em 0;
+    width: 100%;
     li {
-      font-size: 2.25vw;
+      width: 15%;
       &:first-child {
-        letter-spacing: 0.05em;
-        padding: 0 5%;
+        letter-spacing: 0.025em;
         margin: auto 0;
+        width: 30%;
+        padding: 0 2em;
+        p {
+          margin-top: 10px;
+        }
       }
       input {
-        font-size: 1.2vw;
         text-align: center;
-        line-height: 2;
+        line-height: 3;
         border: 1.5px solid #C3BEBE;
+        font-size: 0.4em;
         &:focus {
           outline: none;
           border-color: $color-sub;
@@ -29,3 +36,20 @@
   }
 }
 
+.find_btn {
+  background-color: $color-sub;
+  color: #fff;
+  font-family: $font-sub;
+  padding: 0.5em 2em;
+  border: none;
+  margin-left: 6em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.4em;
+  & {
+    font-size: 0.5em;
+  }
+  &:hover {
+    background-color: darken($color-sub, 20%);
+  }
+}

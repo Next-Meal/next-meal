@@ -113,10 +113,10 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build']
+  tasks: ['build', 'lint', 'webpack:dev']
 };
 
-gulp.task('watch', ['build'], () => {
+gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
