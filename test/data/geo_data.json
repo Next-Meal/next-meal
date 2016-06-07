@@ -1,0 +1,164 @@
+[
+  {
+     "results" : [
+        {
+           "address_components" : [
+              {
+                 "long_name" : "1062",
+                 "short_name" : "1062",
+                 "types" : [ "street_number" ]
+              },
+              {
+                 "long_name" : "Delaware Street",
+                 "short_name" : "Delaware St",
+                 "types" : [ "route" ]
+              },
+              {
+                 "long_name" : "Civic Center",
+                 "short_name" : "Civic Center",
+                 "types" : [ "neighborhood", "political" ]
+              },
+              {
+                 "long_name" : "Denver",
+                 "short_name" : "Denver",
+                 "types" : [ "locality", "political" ]
+              },
+              {
+                 "long_name" : "Denver County",
+                 "short_name" : "Denver County",
+                 "types" : [ "administrative_area_level_2", "political" ]
+              },
+              {
+                 "long_name" : "Colorado",
+                 "short_name" : "CO",
+                 "types" : [ "administrative_area_level_1", "political" ]
+              },
+              {
+                 "long_name" : "United States",
+                 "short_name" : "US",
+                 "types" : [ "country", "political" ]
+              },
+              {
+                 "long_name" : "80204",
+                 "short_name" : "80204",
+                 "types" : [ "postal_code" ]
+              },
+              {
+                 "long_name" : "4033",
+                 "short_name" : "4033",
+                 "types" : [ "postal_code_suffix" ]
+              }
+           ],
+           "formatted_address" : "1062 Delaware St, Denver, CO 80204, USA",
+           "geometry" : {
+              "bounds" : {
+                 "northeast" : {
+                    "lat" : 39.7337428,
+                    "lng" : -104.9923465
+                 },
+                 "southwest" : {
+                    "lat" : 39.7332839,
+                    "lng" : -104.992829
+                 }
+              },
+              "location" : {
+                 "lat" : 39.7335134,
+                 "lng" : -104.9925877
+              },
+              "location_type" : "ROOFTOP",
+              "viewport" : {
+                 "northeast" : {
+                    "lat" : 39.7348623302915,
+                    "lng" : -104.9912387697085
+                 },
+                 "southwest" : {
+                    "lat" : 39.7321643697085,
+                    "lng" : -104.9939367302915
+                 }
+              }
+           },
+           "place_id" : "ChIJT3F9FCx_bIcRSYWgg7TxtxU",
+           "types" : [ "premise" ]
+        }
+     ],
+     "status" : "OK"
+  },
+  {
+     "results" : [],
+     "status" : "ZERO_RESULTS"
+  },
+  {
+     "results" : [
+        {
+           "address_components" : [
+              {
+                 "long_name" : "300",
+                 "short_name" : "300",
+                 "types" : [ "subpremise" ]
+              },
+              {
+                 "long_name" : "2901",
+                 "short_name" : "2901",
+                 "types" : [ "street_number" ]
+              },
+              {
+                 "long_name" : "3rd Avenue",
+                 "short_name" : "3rd Ave",
+                 "types" : [ "route" ]
+              },
+              {
+                 "long_name" : "Belltown",
+                 "short_name" : "Belltown",
+                 "types" : [ "neighborhood", "political" ]
+              },
+              {
+                 "long_name" : "Seattle",
+                 "short_name" : "Seattle",
+                 "types" : [ "locality", "political" ]
+              },
+              {
+                 "long_name" : "King County",
+                 "short_name" : "King County",
+                 "types" : [ "administrative_area_level_2", "political" ]
+              },
+              {
+                 "long_name" : "Washington",
+                 "short_name" : "WA",
+                 "types" : [ "administrative_area_level_1", "political" ]
+              },
+              {
+                 "long_name" : "United States",
+                 "short_name" : "US",
+                 "types" : [ "country", "political" ]
+              },
+              {
+                 "long_name" : "98121",
+                 "short_name" : "98121",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "formatted_address" : "2901 3rd Ave #300, Seattle, WA 98121, USA",
+           "geometry" : {
+              "location" : {
+                 "lat" : 47.618217,
+                 "lng" : -122.351832
+              },
+              "location_type" : "ROOFTOP",
+              "viewport" : {
+                 "northeast" : {
+                    "lat" : 47.6195659802915,
+                    "lng" : -122.3504830197085
+                 },
+                 "southwest" : {
+                    "lat" : 47.6168680197085,
+                    "lng" : -122.3531809802915
+                 }
+              }
+           },
+           "place_id" : "EikyOTAxIDNyZCBBdmUgIzMwMCwgU2VhdHRsZSwgV0EgOTgxMjEsIFVTQQ",
+           "types" : [ "subpremise" ]
+        }
+     ],
+     "status" : "OK"
+  }
+]

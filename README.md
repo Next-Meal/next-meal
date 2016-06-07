@@ -1,13 +1,15 @@
-# next-meal ![Travis CI build icon](https://travis-ci.org/Next-Meal/next-meal.svg?branch=master)
+# next-meal [![Build Status](https://travis-ci.org/Next-Meal/next-meal.svg?branch=master)](https://travis-ci.org/Next-Meal/next-meal)
 
-Next-meal is an informational tool to assist those in need by helping them find local meal programs.
+Next-meal is an informational tool to assist those in need by helping them find local meal programs. The web API is deployed at <https://next-meal.herokuapp.com>.
+
 Information is gathered from <https://data.seattle.gov>.
 
 ## Routes
 
-Meal information can be retrieved in two ways:
+Meal information can be retrieved in three ways:
   1. HTTP Request
   2. SMS Request
+  3. Voice Request
 
 ### HTTP Request
 
@@ -19,7 +21,7 @@ To get all current information, an http GET request can be made to:
 ```
 
 Alternatively, locations that serve specific meals or people can be retrieved.
-For example, retrieving 'breakfast' will return locations that server breakfast. Or retrieving 'women' will return locations that specifically serve women.  Below are the current routes with filtered information:
+For example, retrieving 'breakfast' will return locations that serve breakfast. Or retrieving 'women' will return locations that specifically serve women.  Below are the current routes with filtered information:
 
 ```
 /api/meals/breakfast
@@ -35,7 +37,7 @@ For example, retrieving 'breakfast' will return locations that server breakfast.
 
 ### SMS Request
 
-Next-meal allows for information to be requested via SMS messaging. Next meal will receive SMS messaging and response with a filtered response.
+Next-Meal allows for information to be requested via SMS messaging. Next-Meal will receive SMS messaging and respond with the requested information.
 
 To receive a response:
 
@@ -48,14 +50,14 @@ To receive a response:
 
 ### Voice Request
 
-Next-meal also allows for meal information to be requested through phone messages.  To receive a response:
+Next-Meal also allows for meal information to be requested through phone messages. To receive a response:
 
   1. Call: **206-429-6617**
 
   2. The user will be prompted to select: (1) for breakfast, (2) for lunch, or (3) for dinner.
 
-  3. Next meal will respond with two different location.
+  3. Next meal will respond with two different location options.
 
-### Registering
+### Registration
 
-While using the above methods does not require registering.  Users can register their phone number with next-meal.  In a future implementation, next-meal will be able to send automated messages to users.  To register, text 'register' to **206-429-6617**
+Although it is not required, users may register their phone number with Next-Meal. In a future implementation, Next-Meal will be able to send news and updates to users via SMS. Text 'register' to **206-429-6617** from the device that you wish to register.
