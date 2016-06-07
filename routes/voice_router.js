@@ -1,6 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable camelcase */
-
 const Router = require('express').Router;
 const twilio = require('twilio');
 const location = require(__dirname + '/../models/location');
@@ -30,16 +27,16 @@ voiceRouter.post('/', (req, res) => {
 voiceRouter.get('/response', (req, res) => {
   var phoneResponse = req.query.Digits;
   var lookupMeal;
-  if (phoneResponse == 1) {
+  if (phoneResponse === '1') {
     lookupMeal = 'Breakfast';
   }
-  if (phoneResponse == 2) {
+  if (phoneResponse === '2') {
     lookupMeal = 'Lunch';
   }
-  if (phoneResponse == 3) {
+  if (phoneResponse === '3') {
     lookupMeal = 'Dinner';
   }
-  if (phoneResponse == 7) {
+  if (phoneResponse === '7') {
     var songUrl =
       'https://ia600805.us.archive.org/27/items/NeverGonnaGiveYouUp/jocofullinterview41.mp3';
     var twiml = new twilio.TwimlResponse();

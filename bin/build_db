@@ -2,23 +2,29 @@
 
 const mongoose = require('mongoose');
 const buildDb = require(__dirname + '/../lib/build_db');
+const srcBaseUrl = 'https://data.seattle.gov/resource/47rs-c243.json';
+const googleUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+const APP_TOKEN = process.env.APP_TOKEN;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/next_meal';
 
+var sourceUrl = APP_TOKEN ? srcBaseUrl + '?$$app_token=' + APP_TOKEN : srcBaseUrl;
+
 mongoose.connection.on('open', () => {
-  buildDb.getSourceData()
+  buildDb.getSourceData(sourceUrl)
     .then((srcDataArr) => {
       return buildDb.dropCollection(srcDataArr);
     })
     .then((srcDataArr) => {
-      return buildDb.getGeoData(srcDataArr);
+      return buildDb.getGeoData(googleUrl, GOOGLE_API_KEY, srcDataArr);
     })
     .then((dataObj) => {
       var zipData = buildDb.setZipCode(dataObj);
 
       buildDb.saveDocs(zipData);
     })
-    .catch((e) => {
-      buildDb.errorHandler(e);
+    .catch((err) => {
+      buildDb.errorHandler(err);
     });
 });
 

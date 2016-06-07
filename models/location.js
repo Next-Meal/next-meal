@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const mongoose = require('mongoose');
 
 var locationSchema = new mongoose.Schema({

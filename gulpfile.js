@@ -24,7 +24,7 @@ gulp.task('lint:files', () => {
       useEslintrc: true
     }))
     .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:browser', () => {
