@@ -1,7 +1,6 @@
 const angular = require('angular');
 
 describe('handle error service', function() {
-  var handleError;
   beforeEach(angular.mock.module('nextMeal'));
 
   it('should return a function', angular.mock.inject(function(handleError) {

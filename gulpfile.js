@@ -15,7 +15,7 @@ const neat = require('node-neat').includePaths;
 var files = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js',
                  '_server.js', 'gulpfile.js', 'index.js', 'server.js'];
 var appFiles = 'app/**/*.js';
-var testFiles = 'test/**/*.js';
+var testFiles = ['!test/bundle.js', '!test/bundle.js.map', 'test/**/*.js'];
 var staticFiles = ['./app/**/*.html', './app/**/*.jpg', './app/**/*.svg', './app/**/*.png'];
 
 gulp.task('lint:files', () => {
@@ -32,8 +32,11 @@ gulp.task('lint:browser', () => {
     .pipe(eslint({
       'env': {
         'browser': true,
-        'jasmine': true,
-        'protractor': true
+        'es6': true,
+        'commonjs': true
+      },
+      'globals': {
+        'angular': 1
       }
     }))
     .pipe(eslint.format());
@@ -41,8 +44,17 @@ gulp.task('lint:browser', () => {
 
 gulp.task('lint:test', () => {
   return gulp.src(testFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
+  .pipe(eslint({
+    'env': {
+      'browser': true,
+      'jasmine': true,
+      'protractor': true
+    },
+    'globals': {
+      'angular': 1
+    }
+  }))
+  .pipe(eslint.format());
 });
 
 gulp.task('sass', () => {

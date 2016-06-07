@@ -45,7 +45,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	const angular = __webpack_require__(2);
 	__webpack_require__(15);
 	
 	__webpack_require__(16);
@@ -35497,7 +35496,6 @@
 	const angular = __webpack_require__(2);
 	
 	describe('handle error service', function() {
-	  var handleError;
 	  beforeEach(angular.mock.module('nextMeal'));
 	
 	  it('should return a function', angular.mock.inject(function(handleError) {
@@ -35510,7 +35508,7 @@
 	    console.log(testErrArr);
 	    expect(testErrArr.length).toBe(1);
 	    expect(testErrArr[0] instanceof Error).toBe(true);
-	    expect(testErrArr[0].message).toBe('test message');
+	    expect(testErrArr[0].message).toBe('test error');
 	  }));
 	});
 
