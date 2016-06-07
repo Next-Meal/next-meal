@@ -22,7 +22,7 @@ module.exports = function(app) {
     };
 
     Resource.prototype.create = function(resource) {
-      return $http.post(this.url + '/' + resource._id, resource)
+      return $http.post(this.url, resource)
         .then((res) => {
           this.data.push(res.data);
         }, handleError(this.errors, this.options.errMessages.create || 'could not POST resource'));
