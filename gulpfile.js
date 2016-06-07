@@ -13,9 +13,13 @@ const KarmaServer = require('karma').Server;
 
 var serverFiles = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js', 'test/unit/server/**/*.js',
                    '_server.js', 'gulpfile.js', 'index.js', 'server.js', 'karma.conf.js'];
-var appFiles = 'app/**/*.js';
-var appTestFiles = ['test/unit/client/**/*_test.js'];
 var staticFiles = ['app/**/*.html', 'app/**/*.jpg', 'app/**/*.svg', 'app/**/*.png'];
+var nodemonOptions = {
+  script: 'server.js',
+  ext: 'html scss js',
+  ignore: ['build/'],
+  tasks: ['build', 'lint', 'webpack:dev']
+};
 
 gulp.task('lint:server', () => {
   return gulp.src(serverFiles)
@@ -25,7 +29,7 @@ gulp.task('lint:server', () => {
 });
 
 gulp.task('lint:app', () => {
-  return gulp.src(appFiles)
+  return gulp.src('app/**/*.js')
     .pipe(eslint({
       'env': {
         'browser': true,
@@ -41,7 +45,7 @@ gulp.task('lint:app', () => {
 });
 
 gulp.task('lint:test', () => {
-  return gulp.src(appTestFiles)
+  return gulp.src('test/unit/client/**/*.js')
   .pipe(eslint({
     'env': {
       'browser': true,
@@ -111,24 +115,6 @@ gulp.task('karma:test', ['webpack:test'], (done) => {
     configFile: __dirname + '/karma.conf.js'
   }, done).start();
 });
-
-gulp.task('develop', () => {
-  nodemon({
-    script: 'server.js',
-    ext: 'js',
-    tasks: ['lint', 'test']
-  })
-  .on('restart', () => {
-    process.stdout.write('Server restarted!\n');
-  });
-});
-
-var nodemonOptions = {
-  script: 'server.js',
-  ext: 'html scss js',
-  ignore: ['build/'],
-  tasks: ['build', 'lint', 'webpack:dev']
-};
 
 gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   livereload.listen();

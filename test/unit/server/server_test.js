@@ -1,9 +1,6 @@
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const dirtyChai = require('dirty-chai');
 chai.use(chaiHttp);
-chai.use(dirtyChai);
 const expect = chai.expect;
 const request = chai.request;
 const mongoose = require('mongoose');
