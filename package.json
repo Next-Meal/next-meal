@@ -56,9 +56,14 @@
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
     "html-loader": "^0.4.3",
-    "mocha": "^2.4.5",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "mocha": "^2.5.3",
     "node-bourbon": "^4.2.8",
     "node-neat": "^1.7.2",
+    "sinon": "^1.17.4",
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {

@@ -1,14 +1,18 @@
 const angular = require('angular');
-const router = require('angular-route');
-
-const nextMeal = angular.module('nextMeal', [router]);
+const nextMeal = angular.module('nextMeal', [require('angular-route')]);
 
 require('./locations')(nextMeal);
+require('./services')(nextMeal);
 
 nextMeal.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/home', {
-      templateUrl: 'templates/home.html',
+    .when('/', {
+      templateUrl: 'templates/main_view.html',
+      controller: 'LocationsController',
+      controllerAs: 'locctrl'
+    })
+    .when('/locations', {
+      templateUrl: 'templates/locations/views/locations.html',
       controller: 'LocationsController',
       controllerAs: 'locctrl'
     })
@@ -23,6 +27,6 @@ nextMeal.config(['$routeProvider', function($routeProvider) {
       controllerAs: 'authctrl'
     })
     .otherwise({
-      redirectTo: '/locations'
+      redirectTo: '/'
     });
 }]);

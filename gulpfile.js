@@ -24,7 +24,7 @@ gulp.task('lint:files', () => {
       useEslintrc: true
     }))
     .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:browser', () => {
@@ -83,7 +83,7 @@ gulp.task('webpack:test', () => {
         ]
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./test'));
 });
 
 gulp.task('static:dev', () => {
@@ -113,10 +113,10 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build']
+  tasks: ['build', 'lint', 'webpack:dev']
 };
 
-gulp.task('watch', ['build'], () => {
+gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
