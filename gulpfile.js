@@ -14,7 +14,7 @@ gulp.task('lint', () => {
       useEslintrc: true
     }))
     .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('test', () => {
