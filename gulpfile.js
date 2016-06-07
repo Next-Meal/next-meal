@@ -15,8 +15,10 @@ const neat = require('node-neat').includePaths;
 var files = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js',
                  '_server.js', 'gulpfile.js', 'index.js', 'server.js'];
 var appFiles = 'app/**/*.js';
-var testFiles = 'test/**/*.js';
+var testFiles = ['!test/bundle.js', '!test/bundle.js.map', 'test/**/*.js'];
 var staticFiles = ['./app/**/*.html', './app/**/*.jpg', './app/**/*.svg', './app/**/*.png'];
+var mochaTestFiles = ['test/db_test.js', 'meal_test.js',
+  'server_test.js', 'twilio_test.js', 'user_test.js'];
 
 gulp.task('lint:files', () => {
   return gulp.src(files)
@@ -24,7 +26,7 @@ gulp.task('lint:files', () => {
       useEslintrc: true
     }))
     .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:browser', () => {
@@ -32,8 +34,11 @@ gulp.task('lint:browser', () => {
     .pipe(eslint({
       'env': {
         'browser': true,
-        'jasmine': true,
-        'protractor': true
+        'es6': true,
+        'commonjs': true
+      },
+      'globals': {
+        'angular': 1
       }
     }))
     .pipe(eslint.format());
@@ -41,8 +46,14 @@ gulp.task('lint:browser', () => {
 
 gulp.task('lint:test', () => {
   return gulp.src(testFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
+  .pipe(eslint({
+    'env': {
+      'browser': true,
+      'jasmine': true,
+      'protractor': true
+    }
+  }))
+  .pipe(eslint.format());
 });
 
 gulp.task('sass', () => {
@@ -56,7 +67,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('webpack:dev', ['lint'], () => {
+gulp.task('webpack:dev', () => {
   return gulp.src('app/js/entry.js')
     .pipe(webpack({
       devtool: 'source-map',
@@ -67,7 +78,7 @@ gulp.task('webpack:dev', ['lint'], () => {
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('webpack:test', ['lint'], () => {
+gulp.task('webpack:test', () => {
   return gulp.src('test/unit/test_entry.js')
     .pipe(webpack({
       devtool: 'source-map',
@@ -83,7 +94,7 @@ gulp.task('webpack:test', ['lint'], () => {
         ]
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./test'));
 });
 
 gulp.task('static:dev', () => {
@@ -92,7 +103,7 @@ gulp.task('static:dev', () => {
 });
 
 gulp.task('test', () => {
-  return gulp.src('test/**/*.js')
+  return gulp.src(mochaTestFiles)
     .pipe(mocha({
       reporter: 'spec'
     }));
@@ -113,10 +124,10 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build']
+  tasks: ['build', 'lint', 'webpack:dev']
 };
 
-gulp.task('watch', ['build'], () => {
+gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
@@ -126,5 +137,5 @@ gulp.task('watch', ['build'], () => {
 });
 
 gulp.task('lint', ['lint:test', 'lint:browser', 'lint:files']);
-gulp.task('build', ['lint', 'static:dev', 'sass']);
-gulp.task('default', ['lint', 'test']);
+gulp.task('build', ['static:dev', 'sass']);
+gulp.task('default', ['build', 'lint', 'test']);

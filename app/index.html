@@ -6,7 +6,8 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|Josefin+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body data-ng-app="nextMeal">
+
 <header class="nav_wrapper">
 <img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
@@ -17,36 +18,16 @@
       <li><a href="#">contact</a></li>
       <li><a class="submenu_li" href="#">organizations</a>
         <ul>
-          <li><a class="submenu_li" href="#">sign in</a></li>
-          <li><a class="submenu_li" href="#">sign out</a></li>
+          <li><a class="submenu_li" href="#">log in</a></li>
+          <li><a class="submenu_li" href="#">sign up</a></li>
         </ul>
       </li>
       <li><a class="donate" href="#">donate</a></li>
     </ul>
   </nav>
 </header>
-<div></div>
-<section class="welcome">
-  <div>
-    <p>text... locate... eat...</p><span>|</span>
-    <p>Next Meal</p>
-  </div>
-</section>
 
-<section class="location">
-  <ul>
-    <li>
-      <p>Find A Location</p>
-    </li>
-    <li>
-      <input type="text" placeholder="enter zip code">
-    </li>
-  </ul>
-</section>
-
-<section class="map">
-  <img src="../images/seattle-map2.png" alt="partial roadmap of downtown seattle">
-</section>
+<main data-ng-view></main>
 
 <footer>
   <ul>
