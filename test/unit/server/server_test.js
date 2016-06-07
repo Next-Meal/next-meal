@@ -1,12 +1,15 @@
+
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const dirtyChai = require('dirty-chai');
 chai.use(chaiHttp);
+chai.use(dirtyChai);
 const expect = chai.expect;
 const request = chai.request;
 const mongoose = require('mongoose');
-const server = require(__dirname + '/../_server');
+const server = require(__dirname + '/../../../_server');
 
-describe('user router', () => {
+describe('server', () => {
   before((done) => {
     this.portBackup = process.env.PORT;
     this.mongoUriBackup = process.env.MONGODB_URI;
@@ -25,13 +28,13 @@ describe('user router', () => {
     });
   });
 
-  it('should show instructions for signing up', (done) => {
+  it('should send index on a GET request to root', (done) => {
     request('localhost:' + this.PORT)
-    .get('/api/signup')
+    .get('/')
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql('Please Text 206-429-6617 to sign-up for Next-Meal');
+      expect(res.text).to.contain('<!DOCTYPE html>');
       done();
     });
   });

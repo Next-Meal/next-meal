@@ -4,7 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
-const dayFilter = require(__dirname + '/../lib/day_filter');
+const dayFilter = require(__dirname + '/../../../lib/day_filter');
 
 describe('twilio router filters', () => {
 

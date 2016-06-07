@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "./bin/build_db",
-    "test": "./node_modules/mocha/bin/mocha test/**/*.js",
-    "start": "node server.js"
+    "postinstall": "gulp build",
+    "start": "node server.js",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
