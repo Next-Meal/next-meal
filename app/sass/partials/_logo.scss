@@ -1,0 +1,13 @@
+
+.logo:before {
+  display: block;
+  position: relative;
+  content: '';
+  width: 15vw;
+  height: 7vw;
+  background: url(../images/Next-Meal-logo-50.svg) no-repeat;
+  background-size: contain;
+  z-index: 100;
+  border: 1px solid $color-border;
+  margin: 1vw 0 -1vw 8vw;
+}

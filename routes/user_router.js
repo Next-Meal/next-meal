@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 const Router = require('express').Router;
 const User = require(__dirname + '/../models/user.js');
 const TwimlResponse = require('twilio').TwimlResponse;

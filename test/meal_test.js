@@ -11,7 +11,7 @@ const server = require(__dirname + '/../_server');
 
 describe('meals router', () => {
   before((done) => {
-    var testData = JSON.parse(fs.readFileSync(__dirname + '/data/test_data.json'));
+    var testData = JSON.parse(fs.readFileSync(__dirname + '/data/src_data.json'));
 
     this.portBackup = process.env.PORT;
     this.mongoUriBackup = process.env.MONGODB_URI;

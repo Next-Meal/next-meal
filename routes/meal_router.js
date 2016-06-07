@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const Router = require('express').Router;
 const errorHandler = require(__dirname + '/../lib/error_handler');
 const location = require(__dirname + '/../models/location');
