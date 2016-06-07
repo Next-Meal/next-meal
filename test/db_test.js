@@ -15,20 +15,6 @@ describe('Database builder', () => {
     this.APP_TOKEN = 'sourceapikey';
     this.GOOGLE_API_KEY = 'googleapikey';
     this.MONGODB_URI = process.env.MONGODB_URI = 'mongodb://localhost/next_meal_test';
-    // mongoose.connection.on('open', () => {
-    //   var testDataArr = [
-    //     { location: '1062 Delaware Street, Denver, CO' },
-    //     { location: '1234 Doesnt Exist Street, Nowheresville' },
-    //     { location: '2901 3rd Ave, Suite 300, Seattle, WA' },
-    //     { location: 'One Amgen Center Drive, Thousand Oaks, CA' },
-    //     { location: '401 Terry Ave N, Seattle, WA' }
-    //   ];
-    //
-    //   buildDb.getGeoData(testDataArr).then((data) => {
-    //     this.testDataObj = data;
-    //     done();
-    //   });
-    // });
     mongoose.connect(this.MONGODB_URI);
   });
 
