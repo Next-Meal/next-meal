@@ -83,7 +83,7 @@ gulp.task('webpack:test', () => {
         ]
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./test'));
 });
 
 gulp.task('static:dev', () => {
