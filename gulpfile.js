@@ -17,6 +17,8 @@ var files = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js',
 var appFiles = 'app/**/*.js';
 var testFiles = ['!test/bundle.js', '!test/bundle.js.map', 'test/**/*.js'];
 var staticFiles = ['./app/**/*.html', './app/**/*.jpg', './app/**/*.svg', './app/**/*.png'];
+var mochaTestFiles = ['test/db_test.js', 'meal_test.js',
+  'server_test.js', 'twilio_test.js', 'user_test.js'];
 
 gulp.task('lint:files', () => {
   return gulp.src(files)
@@ -49,9 +51,6 @@ gulp.task('lint:test', () => {
       'browser': true,
       'jasmine': true,
       'protractor': true
-    },
-    'globals': {
-      'angular': 1
     }
   }))
   .pipe(eslint.format());
@@ -104,7 +103,7 @@ gulp.task('static:dev', () => {
 });
 
 gulp.task('test', () => {
-  return gulp.src('test/**/*.js')
+  return gulp.src(mochaTestFiles)
     .pipe(mocha({
       reporter: 'spec'
     }));
