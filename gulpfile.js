@@ -103,14 +103,14 @@ gulp.task('static:dev', () => {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('mocha:test', () => {
+gulp.task('server:test', () => {
   return gulp.src('test/unit/server/**/*_test.js')
     .pipe(mocha({
       reporter: 'spec'
     }));
 });
 
-gulp.task('karma:test', ['webpack:test'], (done) => {
+gulp.task('client:test', ['webpack:test'], (done) => {
   new KarmaServer({
     configFile: __dirname + '/karma.conf.js'
   }, done).start();
@@ -126,6 +126,6 @@ gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
 });
 
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
-gulp.task('test', ['mocha:test', 'karma:test']);
+gulp.task('test', ['server:test', 'client:test']);
 gulp.task('build', ['webpack:dev', 'static:dev', 'sass']);
 gulp.task('default', ['build', 'lint', 'test']);
