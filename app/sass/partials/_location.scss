@@ -1,0 +1,31 @@
+.location {
+  font-family: $font-text;
+  font-size: 1.5em;
+  color: $color-sub;
+  ul {
+    @include display(flex);
+    @include justify-content(start);
+    @include flex-direction(row);
+    padding: 2vw 0;
+    li {
+      font-size: 2.25vw;
+      &:first-child {
+        letter-spacing: 0.05em;
+        padding: 0 5%;
+        margin: auto 0;
+      }
+      input {
+        font-size: 1.2vw;
+        text-align: center;
+        line-height: 2;
+        border: 1.5px solid #C3BEBE;
+        &:focus {
+          outline: none;
+          border-color: $color-sub;
+          text-shadow: 0 0 2px $color-sub;
+        }
+      }
+    }
+  }
+}
+
