@@ -113,7 +113,7 @@ gulp.task('static:dev', () => {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('server:test', () => {
+gulp.task('server:test', ['client:test'], () => {
   return gulp.src('test/unit/server/**/*_test.js')
     .pipe(mocha({
       reporter: 'spec'
@@ -136,6 +136,6 @@ gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
 });
 
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
-gulp.task('test', ['server:test', 'client:test']);
+gulp.task('test', ['server:test']);
 gulp.task('build', ['webpack:dev', 'static:dev', 'sass']);
-gulp.task('default', ['build', 'lint', 'test']);
+gulp.task('default', ['lint', 'test']);
