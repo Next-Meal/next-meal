@@ -7,6 +7,7 @@ module.exports = function(app) {
       }
       this.data = resourceArr;
       this.url = baseUrl;
+      this.errors = errArr;
       this.options = options || {};
       this.options.errMessages = this.options.errMessages || {};
     };
@@ -22,7 +23,7 @@ module.exports = function(app) {
     };
 
     Resource.prototype.create = function(resource) {
-      return $http.post(this.url + '/' + resource._id, resource)
+      return $http.post(this.url, resource)
         .then((res) => {
           this.data.push(res.data);
         }, handleError(this.errors, this.options.errMessages.create || 'could not POST resource'));
@@ -35,7 +36,7 @@ module.exports = function(app) {
     };
 
     Resource.prototype.remove = function(resource) {
-      return $http.delete(this.url + '/' + resource._id, resource)
+      return $http.delete(this.url + '/' + resource._id)
         .then(() => {
           this.data.splice(this.data.indexOf(resource), 1);
         }, handleError(this.errors, this.options.errMessages.remove ||
