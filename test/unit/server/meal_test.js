@@ -1,4 +1,3 @@
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
@@ -6,12 +5,12 @@ const expect = chai.expect;
 const request = chai.request;
 const fs = require('fs');
 const mongoose = require('mongoose');
-const location = require(__dirname + '/../models/location');
-const server = require(__dirname + '/../_server');
+const location = require(__dirname + '/../../../models/location');
+const server = require(__dirname + '/../../../_server');
 
 describe('meals router', () => {
   before((done) => {
-    var testData = JSON.parse(fs.readFileSync(__dirname + '/data/src_data.json'));
+    var testData = JSON.parse(fs.readFileSync(__dirname + '/../../data/src_data.json'));
 
     this.portBackup = process.env.PORT;
     this.mongoUriBackup = process.env.MONGODB_URI;
