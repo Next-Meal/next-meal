@@ -12,10 +12,11 @@
       <p>Find A Location</p>
     </li>
     <li>
-      <input type="text" placeholder="enter zip code">
+      <input type="text" placeholder="enter zip code" data-ng-model="searchText">
     </li>
     <li>
-      <button type="submit" class="find_btn" data-ng-click="locctrl.getAll()">Find</button>
+      <button type="submit" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
+       <button type="submit" class="reset_btn" data-ng-click="locctrl.results=false" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
     </li>
   </ul>
 </section>
@@ -27,9 +28,12 @@
 <section class="results" data-ng-if="locctrl.results">
   <div class="location_list_wrapper">
     <ul class="location_list">
-      <locations_list data-ng-repeat="location in locctrl.locations | limitTo:5" data-location="location">
-      </locations_list>
+      <locations_list
+        data-ng-repeat="location in locctrl.locations | filter: searchText | limitTo:5"
+        data-location="location"
+        data-buttonText="reset"
+      ></locations_list>
     </ul>
-    <img src="../images/seattle-map2.png" alt="partial map of seattle"></img>
+    <img src="../images/seattle-map2.png" alt="partial map of seattle" class="location_list_map"></img>
   </div>
 </section>
