@@ -187,7 +187,7 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build:dev', 'lint', 'webpack:dev'], () => {
+gulp.task('watch', ['build:dev', 'lint'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
