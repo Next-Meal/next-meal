@@ -1,5 +1,4 @@
-var angular = require('angular');
-require('angular-mocks');
+const angular = require('angular');
 
 describe('location controller', function() {
   var $controller;
