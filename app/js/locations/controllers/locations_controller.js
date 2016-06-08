@@ -12,33 +12,34 @@ module.exports = function(app) {
       remove: 'could not delete locations',
       create: 'could not post to locations'
     };
-    var remote = new Resource(this.locations, this.errors,
+    this.remote = new Resource(this.locations, this.errors,
       baseUrl + '/api/meals', { errMessages: this.locationErrors });
 
     this.getAll = function() {
-      remote.getAll()
+      this.remote.getAll()
       .then(() => {
         this.results = true;
-        console.log(this.locations);
       });
     }.bind(this);
 
     this.createLocation = function() {
-      remote.create(this.newLocation)
+      this.remote.create(this.newLocation)
         .then(() => {
           this.newLocation = null;
         });
     }.bind(this);
 
     this.updateLocation = function(location) {
-      remote.update(location)
+      this.remote.update(location)
         .then(() => {
           location.editing = false;
           this.master = angular.copy(location);
         });
     }.bind(this);
 
-    this.removeLocation = remote.remove.bind(remote);
+    this.removeLocation = function(location) {
+      this.remote.remove(location);
+    }.bind(this);
 
     this.locationStore = function(location) {
       this.master = angular.copy(location);
