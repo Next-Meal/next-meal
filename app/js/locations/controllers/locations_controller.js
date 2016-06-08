@@ -37,9 +37,8 @@ module.exports = function(app) {
         });
     }.bind(this);
 
-    this.removeLocation = function(location) {
-      remote.remove(location);
-    }.bind(this);
+    this.removeLocation = remote.remove.bind(remote);
+
 
     this.locationStore = function(location) {
       this.master = angular.copy(location);
