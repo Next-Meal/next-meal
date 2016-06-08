@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
@@ -7,30 +6,30 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const livereload = require('gulp-livereload');
-const protractor = require('gulp-protractor').protractor;
-const html = require('html-loader');
 const webpack = require('webpack-stream');
+require('html-loader');
 const neat = require('node-neat').includePaths;
+const KarmaServer = require('karma').Server;
 
-var files = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js',
-                 '_server.js', 'gulpfile.js', 'index.js', 'server.js'];
-var appFiles = 'app/**/*.js';
-var testFiles = ['!test/bundle.js', '!test/bundle.js.map', 'test/**/*.js'];
-var staticFiles = ['./app/**/*.html', './app/**/*.jpg', './app/**/*.svg', './app/**/*.png'];
-var mochaTestFiles = ['test/db_test.js', 'meal_test.js',
-  'server_test.js', 'twilio_test.js', 'user_test.js'];
+var serverFiles = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js', 'test/unit/server/**/*.js',
+                   '_server.js', 'gulpfile.js', 'index.js', 'server.js', 'karma.conf.js'];
+var staticFiles = ['app/**/*.html', 'app/**/*.jpg', 'app/**/*.svg', 'app/**/*.png'];
+var nodemonOptions = {
+  script: 'server.js',
+  ext: 'html scss js',
+  ignore: ['build/'],
+  tasks: ['build', 'lint', 'webpack:dev']
+};
 
-gulp.task('lint:files', () => {
-  return gulp.src(files)
-    .pipe(eslint({
-      useEslintrc: true
-    }))
+gulp.task('lint:server', () => {
+  return gulp.src(serverFiles)
+    .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('lint:browser', () => {
-  return gulp.src(appFiles)
+gulp.task('lint:app', () => {
+  return gulp.src('app/**/*.js')
     .pipe(eslint({
       'env': {
         'browser': true,
@@ -41,11 +40,12 @@ gulp.task('lint:browser', () => {
         'angular': 1
       }
     }))
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:test', () => {
-  return gulp.src(testFiles)
+  return gulp.src('test/unit/client/**/*.js')
   .pipe(eslint({
     'env': {
       'browser': true,
@@ -53,18 +53,19 @@ gulp.task('lint:test', () => {
       'protractor': true
     }
   }))
-  .pipe(eslint.format());
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError());
 });
 
 gulp.task('sass', () => {
-  return gulp.src('./app/sass/**/*.scss')
+  return gulp.src('app/sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['sass'].concat(neat)
     }).on('error', sass.logError))
     .pipe(cleanCSS())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('webpack:dev', () => {
@@ -75,11 +76,11 @@ gulp.task('webpack:dev', () => {
         filename: 'bundle.js'
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('webpack:test', () => {
-  return gulp.src('test/unit/test_entry.js')
+  return gulp.src('test/unit/client/test_entry.js')
     .pipe(webpack({
       devtool: 'source-map',
       output: {
@@ -94,38 +95,26 @@ gulp.task('webpack:test', () => {
         ]
       }
     }))
-    .pipe(gulp.dest('./test'));
+    .pipe(gulp.dest('test'));
 });
 
 gulp.task('static:dev', () => {
   return gulp.src(staticFiles)
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('build'));
 });
 
-gulp.task('test', () => {
-  return gulp.src(mochaTestFiles)
+gulp.task('server:test', () => {
+  return gulp.src('test/unit/server/**/*_test.js')
     .pipe(mocha({
       reporter: 'spec'
     }));
 });
 
-gulp.task('develop', () => {
-  nodemon({
-    script: 'server.js',
-    ext: 'js',
-    tasks: ['lint', 'test']
-  })
-  .on('restart', () => {
-    process.stdout.write('Server restarted!\n');
-  });
+gulp.task('client:test', ['webpack:test'], (done) => {
+  new KarmaServer({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
 });
-
-var nodemonOptions = {
-  script: 'server.js',
-  ext: 'html scss js',
-  ignore: ['build/'],
-  tasks: ['build', 'lint', 'webpack:dev']
-};
 
 gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   livereload.listen();
@@ -136,6 +125,7 @@ gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
   });
 });
 
-gulp.task('lint', ['lint:test', 'lint:browser', 'lint:files']);
-gulp.task('build', ['static:dev', 'sass']);
+gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
+gulp.task('test', ['server:test', 'client:test']);
+gulp.task('build', ['webpack:dev', 'static:dev', 'sass']);
 gulp.task('default', ['build', 'lint', 'test']);
