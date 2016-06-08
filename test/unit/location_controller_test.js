@@ -42,15 +42,19 @@ describe('location controller', function() {
       $httpBackend.flush();
       expect(locctrl.locations[0].location).toBe('other');
       expect(locctrl.newLocation).toBe(null);
+      expect(locctrl.errors.length).toBe(0);
     });
 
     it('should send GET requests for locations', function() {
       var testLocation = [{ location: 'test' }];
       $httpBackend.expectGET(baseUrl).respond(200, testLocation);
+      locctrl.results = false;
       locctrl.getAll();
       $httpBackend.flush();
       expect(locctrl.locations.length).toBe(1);
       expect(locctrl.locations[0].location).toBe('test');
+      expect(locctrl.errors.length).toBe(0);
+      expect(locctrl.results).toBe(true);
     });
 
     it('should update location on PUT', function() {
@@ -60,15 +64,17 @@ describe('location controller', function() {
       locctrl.updateLocation(locctrl.locations[0]);
       $httpBackend.flush();
       expect(locctrl.locations[0].editing).toBe(false);
+      expect(locctrl.errors.length).toBe(0);
     });
 
     it('should remove locations on DELETE', function() {
       $httpBackend.expectDELETE(baseUrl + '/1').respond(200);
       var testLocation = { location: 'test', _id: 1 };
-      locctrl.locations = [testLocation];
-      locctrl.removeLocation(testLocation);
+      locctrl.locations.push(testLocation);
+      locctrl.removeLocation(locctrl.locations[0]);
       $httpBackend.flush();
-      expect(locctrl.remote.data.length).toBe(0);
+      expect(locctrl.locations.length).toBe(0);
+      expect(locctrl.errors.length).toBe(0);
     });
   });
 });
