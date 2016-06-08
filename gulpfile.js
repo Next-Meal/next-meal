@@ -7,13 +7,14 @@ const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const livereload = require('gulp-livereload');
 const webpack = require('webpack-stream');
-require('html-loader');
+const named = require('vinyl-named');
 const neat = require('node-neat').includePaths;
 const KarmaServer = require('karma').Server;
 
 var serverFiles = ['lib/**/*.js', 'models/**/*.js', 'routes/**/*.js', 'test/unit/server/**/*.js',
                    '_server.js', 'gulpfile.js', 'index.js', 'server.js', 'karma.conf.js'];
 var staticFiles = ['app/**/*.html', 'app/**/*.jpg', 'app/**/*.svg', 'app/**/*.png'];
+var testBuildFiles = ['babel-polyfill', 'test/unit/client/test_entry.js'];
 var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
@@ -80,7 +81,8 @@ gulp.task('webpack:dev', () => {
 });
 
 gulp.task('webpack:test', () => {
-  return gulp.src('test/unit/client/test_entry.js')
+  return gulp.src(testBuildFiles)
+    .pipe(named())
     .pipe(webpack({
       devtool: 'source-map',
       output: {
@@ -88,9 +90,17 @@ gulp.task('webpack:test', () => {
       },
       module: {
         loaders: [
+          { test: /\.html$/, loader: 'html' },
           {
-            test: /\.html$/,
-            loader: 'html'
+            test: /\.js$/,
+            include: [
+              __dirname + '/app/js',
+              __dirname + '/test/unit/client'
+            ],
+            loader: 'babel',
+            query: {
+              presets: ['es2015']
+            }
           }
         ]
       }
