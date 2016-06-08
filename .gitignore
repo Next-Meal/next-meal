@@ -1,10 +1,9 @@
 test/bundle.js
 test/bundle.js.map
-db/**
-build/**/**
+db
+build
 node_modules
-node_modules/**
-**/node_modules
+
 # Compiled source #
 ###################
 *.com

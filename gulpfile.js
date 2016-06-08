@@ -58,14 +58,24 @@ gulp.task('lint:test', () => {
   .pipe(eslint.failAfterError());
 });
 
-gulp.task('sass', () => {
+gulp.task('sass:dev', () => {
   return gulp.src('app/sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['sass'].concat(neat)
-    }).on('error', sass.logError))
-    .pipe(cleanCSS())
+    })
+    .on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('sass:pro', () => {
+  return gulp.src('app/sass/**/*.scss')
+    .pipe(sass({
+      includePaths: ['sass'].concat(neat)
+    }))
+    .on('error', sass.logError)
+    .pipe(cleanCSS())
     .pipe(gulp.dest('build'));
 });
 
@@ -73,6 +83,16 @@ gulp.task('webpack:dev', () => {
   return gulp.src('app/js/entry.js')
     .pipe(webpack({
       devtool: 'source-map',
+      output: {
+        filename: 'bundle.js'
+      }
+    }))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('webpack:pro', () => {
+  return gulp.src('app/js/entry.js')
+    .pipe(webpack({
       output: {
         filename: 'bundle.js'
       }
@@ -108,7 +128,7 @@ gulp.task('webpack:test', () => {
     .pipe(gulp.dest('test'));
 });
 
-gulp.task('static:dev', () => {
+gulp.task('static', () => {
   return gulp.src(staticFiles)
     .pipe(gulp.dest('build'));
 });
@@ -126,7 +146,7 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
+gulp.task('watch', ['build:dev', 'lint', 'webpack:dev'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
@@ -137,5 +157,6 @@ gulp.task('watch', ['build', 'lint', 'webpack:dev'], () => {
 
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
 gulp.task('test', ['server:test']);
-gulp.task('build', ['webpack:dev', 'static:dev', 'sass']);
+gulp.task('build:dev', ['sass:dev', 'webpack:dev', 'static']);
+gulp.task('build:pro', ['sass:pro', 'webpack:pro', 'static']);
 gulp.task('default', ['lint', 'test']);
