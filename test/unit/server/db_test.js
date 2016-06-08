@@ -4,8 +4,8 @@ const PassThrough = require('stream').PassThrough;
 const https = require('https');
 const fs = require('fs');
 const mongoose = require('mongoose');
-const location = require(__dirname + '/../models/location');
-const buildDb = require(__dirname + '/../lib/build_db');
+const location = require(__dirname + '/../../../models/location');
+const buildDb = require(__dirname + '/../../../lib/build_db');
 
 describe('Database builder', () => {
   before(() => {
@@ -45,7 +45,7 @@ describe('Database builder', () => {
     });
 
     it('should get JSON source data and parse into an array of objects', (done) => {
-      var expected = fs.readFileSync(__dirname + '/data/src_data.json');
+      var expected = fs.readFileSync(__dirname + '/../../data/src_data.json');
       var req = new PassThrough();
       var res = new PassThrough();
 
@@ -100,7 +100,7 @@ describe('Database builder', () => {
     var collectionDropped = false;
 
     before((done) => {
-      var srcData = JSON.parse(fs.readFileSync(__dirname + '/data/src_data.json'));
+      var srcData = JSON.parse(fs.readFileSync(__dirname + '/../../data/src_data.json'));
 
       location.insertMany(srcData, (err, data) => {
         if (err) throw err;
@@ -239,7 +239,7 @@ describe('Database builder', () => {
     };
 
     before(() => {
-      dataObj.geoData = JSON.parse(fs.readFileSync(__dirname + '/data/geo_data.json'));
+      dataObj.geoData = JSON.parse(fs.readFileSync(__dirname + '/../../data/geo_data.json'));
       zipData = buildDb.setZipCode(dataObj);
     });
 
