@@ -5,7 +5,6 @@ describe('location controller', function() {
   var $controller;
   var $scope;
   var baseUrl = 'http://localhost:5000/api/meals';
-  var locctrl;
 
   beforeEach(angular.mock.module('nextMeal'));
 
@@ -24,7 +23,7 @@ describe('location controller', function() {
     var $httpBackend;
     var locctrl;
 
-    beforeEach(angular.mock.inject(function(_$httpBackend_){
+    beforeEach(angular.mock.inject(function(_$httpBackend_) {
       $httpBackend = _$httpBackend_;
       locctrl = $controller('LocationsController', { $scope });
     }));
@@ -35,7 +34,7 @@ describe('location controller', function() {
     });
 
     it('should send POST requests for locations', function() {
-      $httpBackend.expectPOST(baseUrl, { location: 'test'}).respond(200, { location: 'other' });
+      $httpBackend.expectPOST(baseUrl, { location: 'test' }).respond(200, { location: 'other' });
       expect(locctrl.locations.length).toBe(0);
       locctrl.newLocation = { location: 'test' };
       locctrl.createLocation();
@@ -59,7 +58,8 @@ describe('location controller', function() {
 
     it('should update location on PUT', function() {
       locctrl.locations = [{ location: 'test', editing: true, _id: 1 }];
-      $httpBackend.expectPUT(baseUrl + '/1', { location: 'update test', editing: true, _id: 1 }).respond(200);
+      $httpBackend.expectPUT(baseUrl + '/1',
+        { location: 'update test', editing: true, _id: 1 }).respond(200);
       locctrl.locations[0].location = 'update test';
       locctrl.updateLocation(locctrl.locations[0]);
       $httpBackend.flush();
