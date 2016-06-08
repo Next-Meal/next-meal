@@ -19,7 +19,6 @@ module.exports = function(app) {
       remote.getAll()
       .then(() => {
         this.results = true;
-        console.log(this.locations);
       });
     }.bind(this);
 
@@ -38,7 +37,9 @@ module.exports = function(app) {
         });
     }.bind(this);
 
-    this.removeLocation = remote.remove.bind(remote);
+    this.removeLocation = function(location) {
+      remote.remove(location);
+    }.bind(this);
 
     this.locationStore = function(location) {
       this.master = angular.copy(location);
