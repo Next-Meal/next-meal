@@ -6,6 +6,7 @@ module.exports = function(app) {
     this.errors = [];
     this.master = {};
     this.results = false;
+    this.searchText = '';
     this.locationErrors = {
       getAll: 'could not get locations',
       update: 'could not update locations',
@@ -48,5 +49,9 @@ module.exports = function(app) {
       var oldLocation = this.locations[this.locations.indexOf(location)];
       angular.copy(this.master, oldLocation);
     }.bind(this);
+
+    this.reset = function() {
+      this.searchText = null;
+    };
   }]);
 };
