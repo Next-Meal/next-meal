@@ -1,40 +1,43 @@
-
-<section class="welcome" data-ng-controller="LocationsController as locctrl">
-  <div>
+<section class="welcome">
+  <!-- <div>
     <p>text... locate... eat...</p><span>|</span>
     <p>Next Meal</p>
   </div>
 </section>
 <section>
-<section class="location">
-  <ul>
-    <li>
-      <p>Find A Location</p>
-    </li>
-    <li>
-      <input type="text" placeholder="enter zip code" data-ng-model="searchText">
-    </li>
-    <li>
-      <button type="submit" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
-       <button type="submit" class="reset_btn" data-ng-click="locctrl.results=false" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
-    </li>
-  </ul>
-</section>
-
-<section class="map" data-ng-if="!locctrl.results">
-  <img src="../images/seattle-map2.png" alt="partial map of seattle">
-</section>
-
-<section class="results" data-ng-if="locctrl.results">
-  <div class="location_list_wrapper">
-    <ul class="location_list">
-      <locations_list
-        data-ng-repeat="location in locctrl.locations | filter: searchText | limitTo:5"
-        data-location="location"
-        data-buttonText="reset"
-      ></locations_list>
+  <section class="location">
+    <ul>
+      <li>
+        <p>Find A Location</p>
+      </li>
+      <li>
+        <input type="text" placeholder="enter zip code" data-ng-model="searchText">
+      </li>
+      <li>
+        <button type="submit" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
+         <button type="submit" class="reset_btn" data-ng-click="locctrl.results=false" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
+      </li>
     </ul>
-    <img src="../images/seattle-map2.png" alt="partial map of seattle" class="location_list_map"></img>
-  </div>
-</section>
+  </section> -->
+
+  <!-- <section class="map" data-ng-if="!locctrl.results"> -->
+    <p>hikjlkjlkjlkjlk</p>
+    <div ng-if="true">
+      <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+    </div>
+    <!-- <img src="./images/seattle-map2.png" alt="partial map of seattle"> -->
+  <!-- </section> -->
+
+  <!-- <section class="results" data-ng-if="locctrl.results">
+    <div class="location_list_wrapper">
+      <ul class="location_list">
+        <locations_list
+          data-ng-repeat="location in locctrl.locations | filter: searchText | limitTo:5"
+          data-location="location"
+          data-buttonText="reset"
+        ></locations_list>
+      </ul>
+      <img src="../images/seattle-map2.png" alt="partial map of seattle" class="location_list_map"></img>
+    </div>
+  </section> -->
 </section>

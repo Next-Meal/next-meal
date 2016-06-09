@@ -22,7 +22,7 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build:dev', 'lint', 'webpack:dev']
+  tasks: ['build:dev', 'lint']
 };
 
 gulp.task('lint:server', () => {
@@ -185,7 +185,7 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build', 'lint'], () => {
+gulp.task('watch', ['build:dev', 'lint'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')

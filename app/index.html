@@ -9,7 +9,7 @@
 <body data-ng-app="nextMeal">
 
 <header class="nav_wrapper">
-<img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
+<img src="./images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
     <a href="" id="menu-icon"></a>
     <ul>
@@ -27,12 +27,15 @@
   </nav>
 </header>
 
-<main data-ng-view></main>
+<main data-ng-controller="MapCtrl as mapctrl">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+</main>
+<!-- <main data-ng-view></main> -->
 
 <footer>
   <ul>
     <li class="logo_footer">
-      <img src="../images/Next-Meal-logo-50.svg" alt="logo">
+      <img src="./images/Next-Meal-logo-50.svg" alt="logo">
     </li>
     <li class="site_map">
       <p>Site Map</p>
