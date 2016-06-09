@@ -8,8 +8,10 @@
 </head>
 <body data-ng-app="nextMeal">
 
-<div data-ng-controller="AuthController as globalAuth" data-ng-init="globalAuth.getUsername()">
-
+<div data-ng-controller="AuthController as globalAuth">
+  <p data-ng-if="globalAuth.organizationName">Hello: {{globalAuth.organizationName}}
+    <a href data-ng-click="globalAuth.logout()">Logout</a></p>
+</div>
 <header class="nav_wrapper">
 <img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
@@ -20,8 +22,8 @@
       <li><a href="#">contact</a></li>
       <li><a class="submenu_li" href="#">organizations</a>
         <ul>
-          <li><a class="submenu_li" href="#">log in</a></li>
-          <li><a class="submenu_li" href="#">sign up</a></li>
+          <li><a class="submenu_li" href="#/signin">log in</a></li>
+          <li><a class="submenu_li" href="#/signup">sign up</a></li>
         </ul>
       </li>
       <li><a class="donate" href="#">donate</a></li>
