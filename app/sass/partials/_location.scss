@@ -1,11 +1,10 @@
 .location {
   font-family: $font-text;
-  font-size: 2.5em;
+  font-size: 1.75 em;
   color: $color-sub;
   padding-left: 1.5em;
   ul {
     @include display(flex);
-    // @include justify-content(space-around);
     @include flex-direction(row);
     @include align-items(center);
     padding: 1.25em 0;
