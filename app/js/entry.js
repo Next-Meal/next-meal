@@ -1,6 +1,7 @@
 const angular = require('angular');
 const nextMeal = angular.module('nextMeal', [require('angular-route')]);
 
+require('./auth')(nextMeal);
 require('./locations')(nextMeal);
 require('./services')(nextMeal);
 
@@ -21,7 +22,7 @@ nextMeal.config(['$routeProvider', function($routeProvider) {
       controller: 'SignUpController',
       controllerAs: 'authctrl'
     })
-    .when('signin', {
+    .when('/signin', {
       templateUrl: 'templates/auth/views/auth_view.html',
       controller: 'SignInController',
       controllerAs: 'authctrl'
