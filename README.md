@@ -2,7 +2,7 @@
 
 Next Meal is an informational tool to assist those in need by helping them find local meal programs. You can view the deployed web app at <https://next-meal.herokuapp.com>.
 
-Source data is gathered from <https://data.seattle.gov>, and geocode data from <https://maps.googleapi.com.
+Source data is gathered from <https://data.seattle.gov>, and geocode data from <https://maps.googleapi.com>.
 
 It is possible to run this application locally, but you will not be able to fetch the data required to build the database unless you have the correct API keys set in your local environment.
 
