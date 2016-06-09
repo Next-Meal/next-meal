@@ -1,12 +1,12 @@
 module.exports = function(app) {
-  app.controller('AuthController', ['nmAuth', '$location', function(auth, $location) {
+  app.controller('AuthController', ['nmAuth', 'handleError', '$location', function(auth, handleErr, $location) {
     this.organizationName = '';
     this.errors = [];
     this.getOrganizationName = function() {
       auth.getOrganizationName()
       .then((currentOrganization) => {
         this.organizationName = currentOrganization;
-      }, /* TODO: add error lib service here!!! Same as class!! */ );
+      }, handleErr(this.errors, 'could not get organization'));
     }.bind(this);
 
     this.logout = function() {

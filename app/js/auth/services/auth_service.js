@@ -31,6 +31,6 @@ module.exports = function(app) {
           }, reject);
         }.bind(this));
       }
-    }
+    };
   }]);
 };

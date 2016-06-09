@@ -8,6 +8,8 @@
 </head>
 <body data-ng-app="nextMeal">
 
+<div data-ng-controller="AuthController as globalAuth" data-ng-init="globalAuth.getUsername()">
+
 <header class="nav_wrapper">
 <img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
