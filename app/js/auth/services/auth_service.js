@@ -1,3 +1,4 @@
+/* eslint no-undef:0 no-unused-expressions:0 */
 var baseUrl = require('../../config').baseUrl;
 
 module.exports = function(app) {

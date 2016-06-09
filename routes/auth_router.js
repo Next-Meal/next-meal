@@ -28,8 +28,9 @@ router.get('/signin', basicHTTP, (req, res) => {
   Organization.findOne({ organizationName: req.auth.organizationName }, (err, user) => {
     if (err) return res.status(500).json({ msg: 'authentication error' });
     if (!user) return res.status(500).json({ msg: 'no user error' });
-    if (!user.compareHash(req.auth.password)) return res.status(500).json({ msg: 'comparehash error' });
-
+    if (!user.compareHash(req.auth.password)) {
+      return res.status(500).json({ msg: 'comparehash error' });
+    }
     user.generateToken(function(err, token) {
       if (err) return res.status(500).json({ msg: 'could not generate token' });
 

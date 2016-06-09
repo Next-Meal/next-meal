@@ -1,3 +1,4 @@
+/* eslint max-len:0 no-undef:0 */
 var baseUrl = require('../../config').baseUrl;
 module.exports = function(app) {
   app.controller('SignInController',

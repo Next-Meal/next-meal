@@ -1,4 +1,5 @@
 module.exports = function(app) {
+  // eslint-disable-next-line
   app.controller('AuthController', ['nmAuth', 'handleError', '$location', function(auth, handleErr, $location) {
     this.organizationName = '';
     this.errors = [];

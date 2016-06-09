@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
 
-var organizationSchema = mongoose.Schema({
+var organizationSchema = new mongoose.Schema({
   organizationName: { type: String, required: true, unique: true },
   phoneNumber: { type: String },
   address: { type: String },
@@ -24,6 +24,7 @@ organizationSchema.methods.generateFindHash = function(cb) {
   var _generateFindHash = () => {
     var hash = crypto.randomBytes(32);
     this.findHash = hash.toString('hex');
+    // eslint-disable-next-line
     this.save((err, data) => {
       if (err) {
         if (tries > 9) {
