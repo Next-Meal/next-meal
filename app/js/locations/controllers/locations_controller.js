@@ -1,8 +1,9 @@
 const angular = require('angular');
 
 module.exports = function(app) {
-  app.controller('LocationsController', ['Resource', 'uiGmapGoogleMapApi',
-    function(Resource, gmapApi) {
+  app.controller('LocationsController', ['$scope', 'Resource', 'uiGmapGoogleMapApi',
+    function($scope, Resource, gmapApi) {
+      $scope.markers = [];
       this.locations = [];
       this.errors = [];
       this.master = {};
@@ -51,13 +52,12 @@ module.exports = function(app) {
 
       gmapApi.then((maps) => {
         maps.visualRefresh = true;
-        this.markers = [];
-        this.map = {
+        $scope.map = {
           center: {
-            latitude: 45,
-            longitude: -73
+            latitude: 47.620019,
+            longitude: -122.349156
           },
-          zoom: 8
+          zoom: 16
         };
       });
     }]);

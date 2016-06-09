@@ -1,12 +1,14 @@
 .location_list_wrapper {
   @include display(flex);
   background-color: $color-main;
+  height: 400px;
 }
 
 .location_list {
   width: 25%;
   float: left;
   font-family: $font-sub;
+  overflow: scroll;
   li:nth-child(odd) {
     background-color: $color-main;
   }
