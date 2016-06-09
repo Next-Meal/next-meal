@@ -7,7 +7,7 @@ const jwtAuth = require(__dirname + '/../lib/jwt_auth');
 var mealRouter = module.exports = exports = Router();
 
 mealRouter.get('/organization_meals', jwtAuth, (req, res) => {
-  location.find({ wranglerId: req.user._id }, (err, data) => {
+  location.find({ wranglerId: req.organization._id }, (err, data) => {
     if (err) return errorHandler(err, res, 500);
 
     res.status(200).json(data);
