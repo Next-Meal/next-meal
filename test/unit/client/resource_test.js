@@ -2,7 +2,7 @@ const angular = require('angular');
 
 describe('resource service', function() {
   var $httpBackend;
-  var baseUrl = 'http://localhost:5000/api/meals';
+  var baseUrl = '/api/meals';
 
   beforeEach(angular.mock.module('nextMeal'));
 
