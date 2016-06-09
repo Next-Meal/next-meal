@@ -187,7 +187,7 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build:dev', 'lint', 'webpack:dev'], () => {
+gulp.task('watch', ['build', 'lint'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
@@ -195,7 +195,7 @@ gulp.task('watch', ['build:dev', 'lint', 'webpack:dev'], () => {
     console.log('restarted');
   });
 });
-
+gulp.task('build', ['build:dev']);
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
 gulp.task('test', ['server:test']);
 gulp.task('build:dev', ['sass:dev', 'webpack:dev', 'static']);
