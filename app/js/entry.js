@@ -21,10 +21,15 @@ nextMeal.config(['$routeProvider', function($routeProvider) {
       controller: 'SignUpController',
       controllerAs: 'authctrl'
     })
-    .when('signin', {
+    .when('/signin', {
       templateUrl: 'templates/auth/views/auth_view.html',
       controller: 'SignInController',
       controllerAs: 'authctrl'
+    })
+    .when('/about', {
+      templateUrl: 'templates/locations/views/about.html',
+      controller: 'LocationsController',
+      controllerAs: 'locctrl'
     })
     .otherwise({
       redirectTo: '/'

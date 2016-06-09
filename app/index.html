@@ -11,18 +11,18 @@
 <header class="nav_wrapper">
 <img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
-    <a href="" id="menu-icon"></a>
+    <a href="#/" id="menu-icon"></a>
     <ul>
-      <li><a href="#">home</a></li>
-      <li><a href="#">about</a></li>
-      <li><a href="#">contact</a></li>
-      <li><a class="submenu_li" href="#">organizations</a>
+      <li><a data-ng-href="#/">home</a></li>
+      <li><a data-ng-href="#/about">about</a></li>
+      <li><a data-ng-href="#/">contact</a></li>
+      <li><a class="submenu_li" data-ng-href="#/">organizations</a>
         <ul>
-          <li><a class="submenu_li" href="#">log in</a></li>
-          <li><a class="submenu_li" href="#">sign up</a></li>
+          <li><a class="submenu_li" data-ng-href="#/">log in</a></li>
+          <li><a class="submenu_li" data-ng-href="#/">sign up</a></li>
         </ul>
       </li>
-      <li><a class="donate" href="#">donate</a></li>
+      <li><a class="donate" data-ng-href="#">donate</a></li>
     </ul>
   </nav>
 </header>
@@ -32,7 +32,7 @@
 <footer>
   <ul>
     <li class="logo_footer">
-      <img src="../images/Next-Meal-logo-50.svg" alt="logo">
+      <img src="images/Next-Meal-logo-50.svg" alt="logo">
     </li>
     <li class="site_map">
       <p>Site Map</p>
@@ -45,5 +45,3 @@
   <script src="./bundle.js"></script>
 </body>
 </html>
-<!--
-Welcome to Next Meal! We are a non-profit organization that brings together resources to better assist ongoing hunger needs in our communities.  1 in 7 Washingtonians relies on SNAP (food stamps), the Supplemental Nutrition Assistance Program, which is severely threatened by budget cuts. Half of all people on SNAP are kids. -->
