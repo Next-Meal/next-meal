@@ -19,24 +19,24 @@ footer {
   &:before {
     content: "";
     display: inline-block;
-    width: 8em;
-    height: 13em;
+    width: 5em;
+    height: 8em;
     background: url(../images/footer-space-needle-icn.svg) center center no-repeat;
     position: relative;
     background-size: 100%;
     margin-bottom: -.5em;
   }
   img {
-    width: 19em;
-    height: 10em;
+    width: 14em;
+    height: 7em;
     border: 1px solid $color-border;
   }
 }
-  .site_map {
-    height: 7em;
-    border-right: solid 0.25em $color-sub;
-    line-height: 1.4;
-    font-size: 1.4em;
-    padding-right: 1.8em;
-    padding-top: 1.2em;
-  }
+.site_map {
+  height: 6em;
+  border-right: solid 0.15em $color-sub;
+  line-height: 1.4;
+  font-size: 1em;
+  padding-right: 1.8em;
+  padding-top: 0.5em;
+}
