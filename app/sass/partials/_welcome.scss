@@ -5,22 +5,26 @@
   background-image: url('../images/blue-header-city.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 40em;
-  p {
-    font-family: $font-main;
-    font-size: 4em;
-    color: #fff;
-    text-align: center;
-    &:first-child {
-      letter-spacing: 0.1em;
-      padding: 3em 0 0.5em;
+  height: 39.29em;
+  width: 100%;
+  div {
+    padding-top: 7em;
+    p {
+      font-family: $font-main;
+      font-size: 4em;
+      color: #fff;
+      text-align: center;
+      &:first-child {
+        letter-spacing: 0.1em;
+        padding: 3em 0 0.5em;
+      }
+      @media only screen and (max-width: 900px) {
+        font-size: 2.5em;
+      }
     }
     @media only screen and (max-width: 900px) {
-      font-size: 2.5em;
+      height: 28em;
     }
-  }
-  @media only screen and (max-width: 900px) {
-    height: 28em;
   }
 }
 

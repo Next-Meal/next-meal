@@ -3,7 +3,7 @@ const angular = require('angular');
 describe('location controller', function() {
   var $controller;
   var $scope;
-  var baseUrl = 'http://localhost:5000/api/meals';
+  var baseUrl = '/api/meals';
 
   beforeEach(angular.mock.module('nextMeal'));
 
