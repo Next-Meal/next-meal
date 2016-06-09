@@ -1,0 +1,46 @@
+.location_list_wrapper {
+  @include display(flex);
+  background-color: $color-main;
+}
+
+.location_list {
+  width: 25%;
+  float: left;
+  font-family: $font-sub;
+  li:nth-child(odd) {
+    background-color: $color-main;
+  }
+  li:nth-child(even) {
+    background-color: lighten($color-main, 10%);
+  }
+  li {
+    color: #fff;
+    padding: 6%;
+    span:nth-child(2) {
+      font-size: 1.2em;
+      text-decoration: uppercase;
+      font-weight: bold;
+      &:before {
+        content: '\25CF';
+        color: #fff;
+        font-size: 1.25em;
+        padding-right: 0.5em;
+      }
+    }
+    span:nth-child(3) {
+      font-style: italic;
+    }
+    span {
+      display: block;
+      margin-bottom: 0.25em;
+      &:not(.location_list_name) {
+        padding-left: 1.75em;
+      }
+    }
+  }
+}
+
+.location_list_map {
+  width: 75%;
+  float: right;
+}
