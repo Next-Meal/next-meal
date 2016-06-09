@@ -1,7 +1,7 @@
 <section class="welcome">
   <div>
-    <p>text... locate... eat...</p><span>|</span>
-    <p>Next Meal</p>
+    <p class="typed">text... locate... eat...</p>
+    <p class="typed">Next Meal</p>
   </div>
 </section>
 <section>
@@ -11,11 +11,11 @@
         <p>Find A Location</p>
       </li>
       <li>
-        <input type="text" placeholder="enter zip code" data-ng-model="searchText">
+        <input type="text" placeholder="enter zip code" data-ng-model="locctrl.searchText">
       </li>
       <li>
-        <button type="submit" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
-         <button type="submit" class="reset_btn" data-ng-click="locctrl.results=false" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
+        <button type="button" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
+        <button type="button" class="reset_btn" data-ng-click="locctrl.results=false; locctrl.reset()" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
       </li>
     </ul>
   </section>
@@ -28,12 +28,12 @@
     <div class="location_list_wrapper">
       <ul class="location_list">
         <locations_list
-          data-ng-repeat="location in locctrl.locations | filter: searchText"
+          data-ng-repeat="location in locctrl.locations | filter: locctrl.searchText"
           data-location="location"
           data-buttonText="reset"
         ></locations_list>
       </ul>
-      <ui-gmap-google-map class='location_list_map' center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+      <ui-gmap-google-map class="location_list_map" center="map.center" zoom="map.zoom"></ui-gmap-google-map>
     </div>
   </section>
 </section>

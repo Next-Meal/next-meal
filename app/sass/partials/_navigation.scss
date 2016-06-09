@@ -3,8 +3,8 @@
 #menu-icon {
   display: none;
   position: relative;
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   background: url(../images/menu.png) center no-repeat;
   background-size: cover;
   margin-right: 1.5em;
@@ -13,10 +13,10 @@
 
 .logo_lg {
   position: relative;
-  width: 22.5em;
+  width: 20.5em;
   z-index: 100;
   border: 1px solid $color-border;
-  margin: -0.75% 0 0 3%;
+  margin: -1.25% 0 0 3%;
   @media only screen and (max-width : 1200px) {
     width: 18em;
   }
@@ -32,7 +32,7 @@
 header {
   background: #fff;
   width: 100%;
-  height: 7em;
+  height: 6em;
   position: absolute;
   z-index: 100;
   padding: 2em 0;
@@ -46,9 +46,9 @@ nav {
   font-family: $font-text;
   float: right;
   z-index: 100;
-  font-size: 1.2em;
-  @media only screen and (max-width: 1200px) {
-    font-size: 1em;
+  font-size: 1em;
+  @media only screen and (max-width: 1000px) {
+    font-size: .8em;
   }
   ul {
     padding: 0 1.2em;
@@ -59,6 +59,7 @@ nav {
     li {
       float: left;
       font-size: 1em;
+
       &:hover {
         a:not(.donate) {
           color: #000;
@@ -76,6 +77,10 @@ nav {
         color: #757575;
         text-decoration: none;
         font-weight: 900;
+        &:focus {
+          outline: none;
+          border-bottom: 3px $color-sub solid;
+        }
       }
       &:last-child {
         background-color: $color-sub;
@@ -121,7 +126,7 @@ nav {
 }
 
 /*MEDIA QUERY*/
-@media only screen and (max-width : 60em) {
+@media only screen and (max-width : 40em) {
 
   header {
     position: absolute;

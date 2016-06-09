@@ -5,6 +5,7 @@ require('lodash');
 require('angular-google-maps');
 const nextMeal = angular.module('nextMeal', [ngRoute, 'uiGmapgoogle-maps']);
 
+require('./auth')(nextMeal);
 require('./locations')(nextMeal);
 require('./services')(nextMeal);
 
@@ -18,6 +19,11 @@ nextMeal.config(['$routeProvider', 'uiGmapGoogleMapApiProvider',
       })
       .when('/locations', {
         templateUrl: 'templates/locations/views/locations.html',
+        controller: 'LocationsController',
+        controllerAs: 'locctrl'
+      })
+      .when('/about', {
+        templateUrl: 'templates/locations/views/about.html',
         controller: 'LocationsController',
         controllerAs: 'locctrl'
       })

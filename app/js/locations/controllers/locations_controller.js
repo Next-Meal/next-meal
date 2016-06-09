@@ -7,6 +7,7 @@ module.exports = function(app) {
       this.locations = [];
       this.errors = [];
       this.master = {};
+      this.searchText = '';
       this.results = false;
       this.locationErrors = {
         getAll: 'could not get locations',
@@ -43,12 +44,16 @@ module.exports = function(app) {
 
       this.locationStore = function(location) {
         this.master = angular.copy(location);
-      }.bind(this);
+      };
 
       this.locationReset = function(location) {
         var oldLocation = this.locations[this.locations.indexOf(location)];
         angular.copy(this.master, oldLocation);
-      }.bind(this);
+      };
+
+      this.reset = function() {
+        this.searchText = null;
+      };
 
       gmapApi.then((maps) => {
         maps.visualRefresh = true;

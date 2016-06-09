@@ -5,9 +5,10 @@
 }
 
 .location_list {
+  font-family: $font-sub;
+  font-size: 0.8em;
   width: 25%;
   float: left;
-  font-family: $font-sub;
   overflow: scroll;
   li:nth-child(odd) {
     background-color: $color-main;
