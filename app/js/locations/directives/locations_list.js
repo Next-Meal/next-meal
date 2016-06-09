@@ -7,7 +7,8 @@ module.exports = function(app) {
       transclude: true,
       templateUrl: '/templates/locations/directives/locations_list.html',
       scope: {
-        location: '='
+        location: '=',
+        buttonText: '@'
       },
       link: function(scope, element, attr, controller) {
         scope.store = controller.locationStore;

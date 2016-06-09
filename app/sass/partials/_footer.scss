@@ -5,50 +5,38 @@ footer {
     @include justify-content(space-around);
     @include flex-direction(row);
     @include align-items(center);
-    // &:before {
-    //   content: "";
-    //   display: inline-block;
-    //   width: 7vw;
-    //   height: 11vw;
-    //   background: url('../images/footer-space-needle-icn.svg') center center no-repeat;
-    //   position: relative;
-    //   background-size: 100%;
-    // }
   }
   li {
-
-
-
     p {
       font-family: $font-sub;
       display: block;
       color: $color-text;
     }
   }
-
 }
 
 .logo_footer {
-      &:before {
-      content: "";
-      display: inline-block;
-      width: 7vw;
-      height: 11vw;
-      background: url('../images/footer-space-needle-icn.svg') center center no-repeat;
-      position: relative;
-      background-size: 100%;
-    }
-    img {
-    width: 15vw;
-    height: 7vw;
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 8em;
+    height: 13em;
+    background: url(../images/footer-space-needle-icn.svg) center center no-repeat;
+    position: relative;
+    background-size: 100%;
+    margin-bottom: -.5em;
+  }
+  img {
+    width: 19em;
+    height: 10em;
     border: 1px solid $color-border;
-
   }
 }
   .site_map {
-    height: 7vw;
-    border-right: solid 0.25vw $color-sub;
+    height: 7em;
+    border-right: solid 0.25em $color-sub;
     line-height: 1.4;
-    font-size: 1.2vw;
-    padding-right: 1.5vw
+    font-size: 1.4em;
+    padding-right: 1.8em;
+    padding-top: 1.2em;
   }

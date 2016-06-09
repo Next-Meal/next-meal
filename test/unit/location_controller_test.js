@@ -1,9 +1,10 @@
-const angular = require('angular');
+var angular = require('angular');
+require('angular-mocks');
 
 describe('location controller', function() {
   var $controller;
   var $scope;
-  var baseUrl = '/api/meals';
+  var baseUrl = 'http://localhost:5000/api/meals';
 
   beforeEach(angular.mock.module('nextMeal'));
 
