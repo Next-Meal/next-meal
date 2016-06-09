@@ -52,7 +52,7 @@ module.exports = function(app) {
       };
 
       this.reset = function() {
-        this.searchText = null;
+        this.searchText = '';
       };
 
       gmapApi.then((maps) => {

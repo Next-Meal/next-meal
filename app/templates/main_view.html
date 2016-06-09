@@ -11,11 +11,11 @@
         <p>Find A Location</p>
       </li>
       <li>
-        <input type="text" placeholder="enter zip code" data-ng-model="locctrl.searchText">
-      </li>
-      <li>
         <button type="button" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
         <button type="button" class="reset_btn" data-ng-click="locctrl.results=false; locctrl.reset()" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
+      </li>
+      <li data-ng-if="locctrl.results">
+        <input type="text" placeholder="Search" data-ng-model="locctrl.searchText">
       </li>
     </ul>
   </section>
