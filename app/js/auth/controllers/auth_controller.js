@@ -15,5 +15,10 @@ module.exports = function(app) {
       this.organizationName = '';
       $location.path('/signin');
     }.bind(this);
+
+    this.isLoggedIn = function() {
+      return this.organizationName.length;
+    }.bind(this);
+
   }]);
 };

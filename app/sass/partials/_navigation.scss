@@ -1,4 +1,19 @@
-/*- based on tutorial http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu -*/
+
+.login_status {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 2em;
+  padding-top: 7.25em;
+  z-index: 200;
+  font-family: $font-text;
+  text-decoration: italic;
+  color: #fff;
+  p > a {
+    font-style: italic;
+    text-decoration: none;
+  }
+}
 
 #menu-icon {
   display: none;
@@ -106,7 +121,7 @@ nav {
         }
       }
     }
-}
+  }
 }
 .donate {
   text-transform: uppercase;
@@ -124,7 +139,7 @@ nav {
 }
 
 /*MEDIA QUERY*/
-@media only screen and (max-width : 40em) {
+@media screen and (max-width : 50em) {
 
   header {
     position: absolute;
