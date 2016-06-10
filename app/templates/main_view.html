@@ -31,11 +31,11 @@
   <section class="results" data-ng-if="locctrl.results">
     <div class="location_list_wrapper">
       <ul class="location_list">
-        <locations_list
+        <locations-list
           data-ng-repeat="location in locctrl.locations | filter: locctrl.searchText"
           data-location="location"
-          data-buttonText="reset"
-        ></locations_list>
+          data-buttonText="reset">
+        </locations-list>
       </ul>
       <ui-gmap-google-map
         class="location_list_map"

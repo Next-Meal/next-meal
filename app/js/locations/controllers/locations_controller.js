@@ -18,27 +18,30 @@ module.exports = function(app) {
       var remote = new Resource(this.locations, this.errors,
         '/api/meals', { errMessages: this.locationErrors });
 
+      var setMarkers = function() {
+        var marker;
+
+        for (var i = 0; i < this.locations.length; i++) {
+          if (this.locations[i].coordinates) {
+            marker = {
+              latitude: this.locations[i].coordinates.lat,
+              longitude: this.locations[i].coordinates.lng,
+              id: i,
+              icon: './images/map_icon.png',
+              options: {
+                title: this.locations[i].name_of_program
+              }
+            };
+            this.markers.push(marker);
+          }
+        }
+      }.bind(this);
+
       this.getAll = function() {
         remote.getAll()
         .then(() => {
-          var marker;
-
           this.results = true;
-
-          for (var i = 0; i < this.locations.length; i++) {
-            if (this.locations[i].coordinates) {
-              marker = {
-                latitude: this.locations[i].coordinates.lat,
-                longitude: this.locations[i].coordinates.lng,
-                id: i,
-                icon: './images/map_icon.png',
-                options: {
-                  title: this.locations[i].name_of_program
-                }
-              };
-              this.markers.push(marker);
-            }
-          }
+          setMarkers();
         });
       }.bind(this);
 
@@ -46,6 +49,7 @@ module.exports = function(app) {
         remote.create(this.newLocation)
           .then(() => {
             this.newLocation = null;
+            setMarkers();
           });
       }.bind(this);
 
@@ -54,6 +58,7 @@ module.exports = function(app) {
           .then(() => {
             location.editing = false;
             this.master = angular.copy(location);
+            setMarkers();
           });
       }.bind(this);
 
@@ -76,10 +81,10 @@ module.exports = function(app) {
         maps.visualRefresh = true;
         this.map = {
           center: {
-            latitude: 47.620019,
-            longitude: -122.349156
+            latitude: 47.610019,
+            longitude: -122.339156
           },
-          zoom: 14
+          zoom: 13
         };
         this.options = {
           scrollwheel: false
