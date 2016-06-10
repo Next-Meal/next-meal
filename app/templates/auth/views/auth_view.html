@@ -1,3 +1,8 @@
+<div data-ng-controller="AuthController as globalAuth" class="login_status">
+  <p data-ng-init="globalAuth.getOrganizationName()">Welcome, <span ng-show="globalAuth.isLoggedIn()">{{globalAuth.organizationName}}</span><span ng-show="!globalAuth.isLoggedIn()">Guest</span>
+    <a href data-ng-click="globalAuth.logout()">Logout</a></p>
+</div>
+
 <div class="auth_wrapper">
   <section>
     <form name="authform" data-ng-submit="authctrl.authenticate(authctrl.organization)" class="form_green">
@@ -15,7 +20,7 @@
         <span>Confirmation:</span>
         <input data-ng-if="authctrl.signup" required type="password" data-ng-model="authctrl.organization.confirmation">
       </label>
-      <button type="submit" data-ng-disabled="authform.$invalid">{{authctrl.buttonText}}</button>
+      <button type="submit" data-ng-disabled="authform.$invalid" data-ng-click="">{{authctrl.buttonText}}</button>
     </form>
   </section>
 </div>

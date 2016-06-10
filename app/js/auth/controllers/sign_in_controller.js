@@ -17,7 +17,7 @@ module.exports = function(app) {
       .then((res) => {
         auth.saveToken(res.data.token);
         auth.getOrganizationName();
-        // $location.path('#/');
+        $location.path('/organization');
       }, handleErr(this.errors, 'could not sign into organization'));
     };
   }]);

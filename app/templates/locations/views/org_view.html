@@ -1,7 +1,12 @@
-  <section data-ng-if="authctrl.organizationName">
-    <location-form data-ng-controller="LocationsController"
-      data-save-method="create"
-      data-location="location"
-      data-button-text="Create"
-    ></location-form>
-  </section>
+<div data-ng-controller="AuthController as globalAuth" class="login_status">
+  <p data-ng-init="globalAuth.getOrganizationName()">Welcome, <span ng-show="globalAuth.isLoggedIn()">{{globalAuth.organizationName}}</span><span ng-show="!globalAuth.isLoggedIn()">Guest</span>
+  <a href data-ng-click="globalAuth.logout()">Logout</a></p>
+</div>
+
+<section class="location_form_wrapper">
+  <location-form
+    data-save-method="create"
+    data-location="location"
+    data-button-text="Create"
+  ></location-form>
+</section>
