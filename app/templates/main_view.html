@@ -1,3 +1,7 @@
+<div data-ng-controller="AuthController as globalAuth" class="login_status">
+  <p data-ng-init="globalAuth.getOrganizationName()">Welcome, <span ng-show="globalAuth.isLoggedIn()">{{globalAuth.organizationName}}</span><span ng-show="!globalAuth.isLoggedIn()">Guest</span>
+    <a href data-ng-click="globalAuth.logout()">Logout</a></p>
+</div>
 <section class="welcome">
   <div>
     <p class="typed">text... locate... eat...</p>
