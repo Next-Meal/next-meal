@@ -1,29 +1,25 @@
 .location {
   font-family: $font-text;
-  font-size: 2.5em;
+  font-size: 1.75 em;
   color: $color-sub;
   padding-left: 1.5em;
   ul {
     @include display(flex);
-    // @include justify-content(space-around);
     @include flex-direction(row);
     @include align-items(center);
     padding: 1.25em 0;
     width: 100%;
     li {
-      width: 15%;
       &:first-child {
         letter-spacing: 0.025em;
         margin: auto 0;
-        width: 30%;
         padding: 0 2em;
         p {
-          margin-top: 10px;
         }
       }
       input {
         text-align: center;
-        line-height: 3;
+        height: 3.5em;
         border: 1.5px solid #C3BEBE;
         font-size: 0.4em;
         &:focus {
@@ -38,6 +34,9 @@
 
 .find_btn {
   @extend .button_one;
+  width: 10em;
+  height: 3.5em;
+  margin: 0 3em;
   & {
     font-size: 0.5em;
   }
