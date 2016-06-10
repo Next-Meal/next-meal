@@ -27,12 +27,17 @@ nextMeal.config(['$routeProvider', 'uiGmapGoogleMapApiProvider',
         controller: 'LocationsController',
         controllerAs: 'locctrl'
       })
+      .when('/organization', {
+        templateUrl: 'templates/locations/views/org_view.html',
+        controller: 'LocationsController',
+        controllerAs: 'locctrl'
+      })
       .when('/signup', {
         templateUrl: 'templates/auth/views/auth_view.html',
         controller: 'SignUpController',
         controllerAs: 'authctrl'
       })
-      .when('signin', {
+      .when('/signin', {
         templateUrl: 'templates/auth/views/auth_view.html',
         controller: 'SignInController',
         controllerAs: 'authctrl'
