@@ -7,6 +7,7 @@ var locationSchema = new mongoose.Schema({
   name_of_program: { type: String },
   people_served: { type: String },
   zip_code: { type: String },
+  coordinates: { type: Object },
   daysOpen: { type: Object },
   wranglerId: { type: String }
 });

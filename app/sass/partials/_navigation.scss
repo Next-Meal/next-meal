@@ -1,11 +1,9 @@
 
 .login_status {
   position: absolute;
-  right: 0;
-  top: 0;
-  padding-right: 2em;
-  padding-top: 7.25em;
-  z-index: 200;
+  right: 30px;
+  top: 120px;
+  z-index: 50;
   font-family: $font-text;
   text-decoration: italic;
   color: #fff;
