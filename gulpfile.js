@@ -22,7 +22,7 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build', 'lint', 'webpack:dev']
+  tasks: ['build:dev', 'lint']
 };
 
 gulp.task('lint:server', () => {
@@ -101,8 +101,7 @@ gulp.task('webpack:dev', () => {
           {
             test: /\.js$/,
             include: [
-              __dirname + '/app/js',
-              __dirname + '/test/unit/client'
+              __dirname + '/app/js'
             ],
             loader: 'babel',
             query: {
@@ -127,8 +126,7 @@ gulp.task('webpack:pro', () => {
           {
             test: /\.js$/,
             include: [
-              __dirname + '/app/js',
-              __dirname + '/test/unit/client'
+              __dirname + '/app/js'
             ],
             loader: 'babel',
             query: {
@@ -187,7 +185,7 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build', 'lint'], () => {
+gulp.task('watch', ['build:dev', 'lint'], () => {
   livereload.listen();
   nodemon(nodemonOptions).on('restart', () => {
     gulp.src('server.js')
@@ -195,7 +193,7 @@ gulp.task('watch', ['build', 'lint'], () => {
     console.log('restarted');
   });
 });
-gulp.task('build', ['build:dev']);
+
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
 gulp.task('test', ['server:test']);
 gulp.task('build:dev', ['sass:dev', 'webpack:dev', 'static']);

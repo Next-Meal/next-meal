@@ -1,0 +1,61 @@
+.about_section {
+  position: relative;
+  clear: both;
+  padding-top: 7em;
+  background-image: url('../images/blue-header-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
+  color: #fff;
+  font-family: $font-main;
+  h2 {
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+    padding-top: 1.5em;
+  }
+  h4 {
+    font-size: 2em;
+    text-align: center;
+    padding: 0.5em 9em;
+    @media only screen and (max-width: 60em) {
+      padding: 0.5em 3em;
+    }
+  }
+  p {
+    font-size: 1.5em;
+    border-bottom: 2px solid #fff;
+    padding: 0 10em 1em;
+    @media only screen and (max-width: 60em) {
+      padding: 0 3em 1em;
+    }
+  }
+}
+
+.about_wrapper {
+  @include display(flex);
+  @include justify-content(space-around);
+  @include flex-wrap(wrap);
+  div {
+    padding: 3em 1em;
+    text-align: center;
+    width: 30%;
+    clear: both;
+    @media only screen and (max-width: 60em) {
+      min-width: 100%;
+    }
+    ul, ol {
+      font-size: 1.75em;
+      :first-child {
+        padding-top: 1em;
+      }
+      li {
+        font-size: 0.85em;
+        list-style: inside disc none;
+        padding: 0.25em 0;
+        text-align: center;
+      }
+    }
+  }
+}
