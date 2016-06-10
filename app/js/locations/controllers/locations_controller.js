@@ -1,12 +1,12 @@
 const angular = require('angular');
 
 module.exports = function(app) {
-  app.controller('LocationsController', ['$scope', 'Resource', 'uiGmapGoogleMapApi',
-    function($scope, Resource, gmapApi) {
-      $scope.markers = [];
+  app.controller('LocationsController', ['Resource', 'uiGmapGoogleMapApi',
+    function(Resource, gmapApi) {
       this.locations = [];
       this.errors = [];
       this.master = {};
+      this.markers = [];
       this.searchText = '';
       this.results = false;
       this.locationErrors = {
@@ -21,7 +21,24 @@ module.exports = function(app) {
       this.getAll = function() {
         remote.getAll()
         .then(() => {
+          var marker;
+
           this.results = true;
+
+          for (var i = 0; i < this.locations.length; i++) {
+            if (this.locations[i].coordinates) {
+              marker = {
+                latitude: this.locations[i].coordinates.lat,
+                longitude: this.locations[i].coordinates.lng,
+                id: i,
+                icon: './images/map_icon.png',
+                options: {
+                  title: this.locations[i].name_of_program
+                }
+              };
+              this.markers.push(marker);
+            }
+          }
         });
       }.bind(this);
 
@@ -55,15 +72,18 @@ module.exports = function(app) {
         this.searchText = '';
       };
 
-      gmapApi.then((maps) => {
+      gmapApi.then(function(maps) {
         maps.visualRefresh = true;
-        $scope.map = {
+        this.map = {
           center: {
             latitude: 47.620019,
             longitude: -122.349156
           },
-          zoom: 16
+          zoom: 14
         };
-      });
+        this.options = {
+          scrollwheel: false
+        };
+      }.bind(this));
     }]);
 };
