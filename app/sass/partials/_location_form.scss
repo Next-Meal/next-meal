@@ -1,0 +1,15 @@
+.location_form_wrapper {
+  padding: 11em 10em 3em;
+  background-image: url('../images/blue-header-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
+  color: #fff;
+  font-family: $font-main;
+  @media only screen and (max-width: 50em) {
+    margin-left: 2em;
+    margin-right: 2em;
+    max-width: 100%;
+  }
+}

@@ -8,12 +8,12 @@
 </head>
 <body data-ng-app="nextMeal">
 
-<div data-ng-controller="AuthController as globalAuth">
-  <p data-ng-if="globalAuth.organizationName">Hello: {{globalAuth.organizationName}}
+<!-- <div data-ng-controller="AuthController as globalAuth" class="login_status">
+  <p data-ng-init="globalAuth.getOrganizationName()">Welcome, <span ng-show="globalAuth.isLoggedIn()">{{globalAuth.organizationName}}</span><span ng-show="!globalAuth.isLoggedIn()">Guest</span>
     <a href data-ng-click="globalAuth.logout()">Logout</a></p>
-</div>
+</div> -->
 <header class="nav_wrapper">
-<img src="../images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
+<img src="./images/Next-Meal-logo-50.svg" class="logo_lg logo_sm"></img>
   <nav>
     <a href="#/" id="menu-icon"></a>
     <ul>
@@ -26,7 +26,7 @@
           <li><a class="submenu_li" href="#/signup">sign up</a></li>
         </ul>
       </li>
-      <li><a class="donate" data-ng-href="#">donate</a></li>
+      <li><a class="donate" data-ng-href="#/">donate</a></li>
     </ul>
   </nav>
 </header>
@@ -36,7 +36,7 @@
 <footer>
   <ul>
     <li class="logo_footer">
-      <img src="images/Next-Meal-logo-50.svg" alt="logo">
+      <img src="./images/Next-Meal-logo-50.svg" alt="logo">
     </li>
     <li class="site_map">
       <p>Site Map</p>

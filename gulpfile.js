@@ -22,7 +22,7 @@ var nodemonOptions = {
   script: 'server.js',
   ext: 'html scss js',
   ignore: ['build/'],
-  tasks: ['build:dev', 'lint', 'webpack:dev']
+  tasks: ['build:dev', 'lint']
 };
 
 gulp.task('lint:server', () => {
@@ -101,8 +101,7 @@ gulp.task('webpack:dev', () => {
           {
             test: /\.js$/,
             include: [
-              __dirname + '/app/js',
-              __dirname + '/test/unit/client'
+              __dirname + '/app/js'
             ],
             loader: 'babel',
             query: {
@@ -127,8 +126,7 @@ gulp.task('webpack:pro', () => {
           {
             test: /\.js$/,
             include: [
-              __dirname + '/app/js',
-              __dirname + '/test/unit/client'
+              __dirname + '/app/js'
             ],
             loader: 'babel',
             query: {
