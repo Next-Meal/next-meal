@@ -9,7 +9,7 @@
 <body data-ng-app="nextMeal">
 
 <div data-ng-controller="AuthController as globalAuth">
-  <p data-ng-if="globalAuth.organizationName">Hello: {{globalAuth.organizationName}}
+  <p data-ng-init="globalAuth.getOrganizationName()">Hello: {{globalAuth.organizationName ? globalAuth.organizationName : Guest}}
     <a href data-ng-click="globalAuth.logout()">Logout</a></p>
 </div>
 <header class="nav_wrapper">
@@ -26,7 +26,7 @@
           <li><a class="submenu_li" href="#/signup">sign up</a></li>
         </ul>
       </li>
-      <li><a class="donate" data-ng-href="#">donate</a></li>
+      <li><a class="donate" data-ng-href="#/">donate</a></li>
     </ul>
   </nav>
 </header>

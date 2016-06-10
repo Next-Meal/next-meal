@@ -1,0 +1,33 @@
+<form class="form_green">
+  <h1>{{buttonText}} a Location</h1>
+    <label for="day_time">
+      <span>Day and Time</span>
+      <input type="text" name="day_time" data-ng-model="location.day_time">
+    </label>
+  <label for="location">
+    <span>Location</span>
+    <input type="text" name="location" data-ng-model="location.location">
+  </label>
+  <label for="meal_served">
+    <span>Meal Served</span>
+    <input type="text" name="meal_served" data-ng-model="location.meal_served">
+  </label>
+  <label for="name_of_program">
+    <span>Name of Program</span>
+    <input type="text" name="name_of_program" data-ng-model="location.name_of_program">
+  </label>
+  <label for="people_served">
+    <span>People Served</span>
+    <input type="text" name="people_served" data-ng-model="location.people_served">
+  </label>
+  <label for="zip_code">
+    <span>Zip Code</span>
+    <input type="text" name="zip_code" data-ng-model="location.zip_code">
+  </label>
+  <label for="daysOpen">
+    <span>Days Open</span>
+    <input type="text" name="daysOpen" data-ng-model="location.daysOpen">
+  </label>
+  <button id="createLocation" type="submit">{{buttonText}}</button>
+  <ng-transclude></ng-transclude>
+</form>

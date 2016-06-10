@@ -1,0 +1,86 @@
+.auth_wrapper {
+  padding: 11em 10em 3em;
+  background-image: url('../images/blue-header-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
+  color: #fff;
+  font-family: $font-main;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  section {
+    min-width: 18em;
+  }
+
+}
+
+.form_green {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 500px;
+    background: lighten($color-main, 15%);
+    padding: 30px 30px 20px 30px;
+    font: 0.8em $font-main;
+    color: #666;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    @media only screen and (max-width: 50em) {
+      margin-left: 2em;
+      margin-right: 2em;
+      max-width: 100%;
+    }
+}
+.form_green h1 {
+    font: 1.5em $font-main;
+    padding: 20px 0px 20px 40px;
+    display: block;
+    margin: -30px -30px 10px -30px;
+    color: #FFF;
+    background: darken($color-sub, 10%);
+    text-shadow: 1px 1px 1px #949494;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom:1px solid #89AF4C;
+
+}
+.form_green h1>span {
+    display: block;
+    font-size: 11px;
+    color: #FFF;
+}
+
+.form_green label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.form_green label>span {
+    float: left;
+    margin-top: 10px;
+    color: #5E5E5E;
+}
+.form_green input[type="text"], .form_green input[type="password"] {
+    color: #555;
+    height: 30px;
+    line-height:15px;
+    width: 100%;
+    padding: 0px 0px 0px 10px;
+    margin-top: 2px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    outline: 0;
+    box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+    font: normal 14px/14px $font-sub;
+}
+
+.form_green button {
+    background-color: darken($color-sub, 15%);
+    border-radius: 5px;
+    border: none;
+    padding: 15px 25px 10px 25px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #949494;
+}
+.form_green button:hover {
+    background-color: darken($color-sub, 25%);
+}
