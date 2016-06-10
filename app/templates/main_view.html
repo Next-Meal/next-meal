@@ -1,3 +1,7 @@
+<div data-ng-controller="AuthController as globalAuth" class="login_status">
+  <p data-ng-init="globalAuth.getOrganizationName()">Welcome, <span ng-show="globalAuth.isLoggedIn()">{{globalAuth.organizationName}}</span><span ng-show="!globalAuth.isLoggedIn()">Guest</span>
+    <a href data-ng-click="globalAuth.logout()">Logout</a></p>
+</div>
 <section class="welcome">
   <div>
     <p class="typed">text... locate... eat...</p>
@@ -21,19 +25,34 @@
   </section>
 
   <section class="map" data-ng-if="!locctrl.results">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+    <ui-gmap-google-map
+      center="locctrl.map.center"
+      zoom="locctrl.map.zoom"
+      options="locctrl.options">
+    </ui-gmap-google-map>
   </section>
 
   <section class="results" data-ng-if="locctrl.results">
     <div class="location_list_wrapper">
       <ul class="location_list">
-        <locations_list
+        <locations-list
           data-ng-repeat="location in locctrl.locations | filter: locctrl.searchText"
           data-location="location"
-          data-buttonText="reset"
-        ></locations_list>
+          data-buttonText="reset">
+        </locations-list>
       </ul>
-      <ui-gmap-google-map class="location_list_map" center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+      <ui-gmap-google-map
+        class="location_list_map"
+        center="locctrl.map.center"
+        zoom="locctrl.map.zoom"
+        options="locctrl.options">
+        <ui-gmap-markers
+          models="locctrl.markers"
+          coords="'self'"
+          icon="'icon'"
+          options="'options'">
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
     </div>
   </section>
 </section>

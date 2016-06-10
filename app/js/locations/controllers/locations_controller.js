@@ -1,12 +1,12 @@
 const angular = require('angular');
 
 module.exports = function(app) {
-  app.controller('LocationsController', ['$scope', 'Resource', 'uiGmapGoogleMapApi',
-    function($scope, Resource, gmapApi) {
-      $scope.markers = [];
+  app.controller('LocationsController', ['Resource', 'uiGmapGoogleMapApi',
+    function(Resource, gmapApi) {
       this.locations = [];
       this.errors = [];
       this.master = {};
+      this.markers = [];
       this.searchText = '';
       this.results = false;
       this.locationErrors = {
@@ -18,10 +18,30 @@ module.exports = function(app) {
       var remote = new Resource(this.locations, this.errors,
         '/api/meals', { errMessages: this.locationErrors });
 
+      var setMarkers = function() {
+        var marker;
+
+        for (var i = 0; i < this.locations.length; i++) {
+          if (this.locations[i].coordinates) {
+            marker = {
+              latitude: this.locations[i].coordinates.lat,
+              longitude: this.locations[i].coordinates.lng,
+              id: i,
+              icon: './images/map_icon.png',
+              options: {
+                title: this.locations[i].name_of_program
+              }
+            };
+            this.markers.push(marker);
+          }
+        }
+      }.bind(this);
+
       this.getAll = function() {
         remote.getAll()
         .then(() => {
           this.results = true;
+          setMarkers();
         });
       }.bind(this);
 
@@ -29,6 +49,7 @@ module.exports = function(app) {
         remote.create(this.newLocation)
           .then(() => {
             this.newLocation = null;
+            setMarkers();
           });
       }.bind(this);
 
@@ -37,6 +58,7 @@ module.exports = function(app) {
           .then(() => {
             location.editing = false;
             this.master = angular.copy(location);
+            setMarkers();
           });
       }.bind(this);
 
@@ -55,15 +77,18 @@ module.exports = function(app) {
         this.searchText = '';
       };
 
-      gmapApi.then((maps) => {
+      gmapApi.then(function(maps) {
         maps.visualRefresh = true;
-        $scope.map = {
+        this.map = {
           center: {
-            latitude: 47.620019,
-            longitude: -122.349156
+            latitude: 47.610019,
+            longitude: -122.339156
           },
-          zoom: 16
+          zoom: 13
         };
-      });
+        this.options = {
+          scrollwheel: false
+        };
+      }.bind(this));
     }]);
 };
