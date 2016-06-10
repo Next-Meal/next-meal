@@ -1,4 +1,3 @@
-
 <section class="welcome">
   <div>
     <p class="typed">text... locate... eat...</p>
@@ -12,29 +11,29 @@
         <p>Find A Location</p>
       </li>
       <li>
-        <input type="text" placeholder="enter zip code" data-ng-model="locctrl.searchText">
-      </li>
-      <li>
         <button type="button" class="find_btn" data-ng-click="locctrl.getAll()" data-ng-buttonText="Find" data-ng-if="!locctrl.results">Find</button>
         <button type="button" class="reset_btn" data-ng-click="locctrl.results=false; locctrl.reset()" data-ng-buttonText="Find" data-ng-if="locctrl.results">Reset</button>
+      </li>
+      <li data-ng-if="locctrl.results">
+        <input type="text" placeholder="Search" data-ng-model="locctrl.searchText">
       </li>
     </ul>
   </section>
 
   <section class="map" data-ng-if="!locctrl.results">
-    <img src="../images/seattle-map2.png" alt="partial map of seattle">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
   </section>
 
   <section class="results" data-ng-if="locctrl.results">
     <div class="location_list_wrapper">
       <ul class="location_list">
         <locations_list
-          data-ng-repeat="location in locctrl.locations | filter: locctrl.searchText | limitTo:5"
+          data-ng-repeat="location in locctrl.locations | filter: locctrl.searchText"
           data-location="location"
           data-buttonText="reset"
         ></locations_list>
       </ul>
-      <img src="/images/seattle-map2.png" alt="partial map of seattle" class="location_list_map"></img>
+      <ui-gmap-google-map class="location_list_map" center="map.center" zoom="map.zoom"></ui-gmap-google-map>
     </div>
   </section>
 </section>

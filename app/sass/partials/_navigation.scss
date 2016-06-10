@@ -109,12 +109,10 @@ nav {
 }
 }
 .donate {
-  padding-left: 4em;
   text-transform: uppercase;
   background-color: $font-main;
   color: #fff;
   background-color: $color-sub;
-  padding-left: 4em;
   &:hover {
       background-color: darken($color-sub, 20%);
   }
