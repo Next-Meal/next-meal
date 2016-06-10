@@ -8,11 +8,11 @@ const voiceRouter = require(__dirname + '/routes/voice_router');
 const authRouter = require(__dirname + '/routes/auth_router');
 
 app.use('/api', authRouter);
-app.use('/voice', voiceRouter);
 app.use('/api', userRouter);
 app.use('/api', twilioRouter);
 app.use('/api', mealRouter);
-app.use(express.static('build'));
+app.use('/voice', voiceRouter);
+app.use(express.static(__dirname + '/build'));
 
 module.exports = exports = function(port, mongoDbUri, cb) {
   mongoose.connect(mongoDbUri);
