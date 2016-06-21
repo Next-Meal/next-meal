@@ -62,7 +62,7 @@ gulp.task('lint:test', () => {
 });
 
 gulp.task('sass:dev', () => {
-  return gulp.src('app/sass/**/*.scss')
+  return gulp.src('app/sass/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['sass'].concat(neat)
@@ -76,7 +76,7 @@ gulp.task('sass:dev', () => {
 });
 
 gulp.task('sass:pro', () => {
-  return gulp.src('app/sass/**/*.scss')
+  return gulp.src('app/sass/main.scss')
     .pipe(sass({
       includePaths: ['sass'].concat(neat)
     }))
