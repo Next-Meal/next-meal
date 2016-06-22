@@ -17,7 +17,7 @@ organizationSchema.methods.generateHash = function(password) {
 organizationSchema.methods.compareHash = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
-
+//once again keep this consistent
 organizationSchema.methods.generateFindHash = function(cb) {
   var tries = 0;
   var timeout;
@@ -29,7 +29,7 @@ organizationSchema.methods.generateFindHash = function(cb) {
       if (err) {
         if (tries > 9) {
           return cb(new Error('could not generate hash'));
-
+//get rid of this extra line
         }
         return timeout = setTimeout(() => {
           _generateFindHash();

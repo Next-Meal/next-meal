@@ -47,7 +47,7 @@ nextMeal.config(['$routeProvider', 'uiGmapGoogleMapApiProvider',
       });
     gmapProvider
       .configure({
-        key: 'AIzaSyD2ozASwpbHKeG7e-5zyZbsaQN-dB1IP6s',
+        key: 'AIzaSyD2ozASwpbHKeG7e-5zyZbsaQN-dB1IP6s', //is this a private key?
         v: '3',
         libraries: 'drawing,geometry,places'
       });

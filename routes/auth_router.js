@@ -24,9 +24,12 @@ router.post('/signup', jsonParser, (req, res) => {
     });
   });
 });
-
+//keep the use of a blank line consistent, here you have one between other
+//routes you do not. Pick one way of doing it and stick with it.
 router.get('/signin', basicHTTP, (req, res) => {
   Organization.findOne({ organizationName: req.auth.organizationName }, (err, user) => {
+    //with error messages it's usually better to give a generic error to the user
+    //and console.log a more detailed message
     if (err) return res.status(500).json({ msg: 'authentication error' });
     if (!user) return res.status(500).json({ msg: 'no user error' });
     if (!user.compareHash(req.auth.password)) {
