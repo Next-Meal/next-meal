@@ -49,12 +49,8 @@ header {
   position: absolute;
   z-index: 100;
   padding: 2em 0;
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
 }
+
 nav {
   font-family: $font-text;
   float: right;
