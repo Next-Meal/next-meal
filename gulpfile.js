@@ -18,13 +18,6 @@ var staticFiles = ['app/**/*.html', 'app/**/*.jpg', 'app/**/*.svg', 'app/**/*.pn
 var testBuildFiles = ['babel-polyfill', 'test/unit/client/test_entry.js'];
 var buildFiles = ['babel-polyfill', 'app/js/entry.js'];
 
-var nodemonOptions = {
-  script: 'server.js',
-  ext: 'html scss js',
-  ignore: ['build/'],
-  tasks: ['build:dev', 'lint']
-};
-
 gulp.task('lint:server', () => {
   return gulp.src(serverFiles)
     .pipe(eslint())
@@ -72,7 +65,8 @@ gulp.task('sass:dev', () => {
       browsers: ['last 2 versions']
     }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(livereload());
 });
 
 gulp.task('sass:pro', () => {
@@ -111,7 +105,8 @@ gulp.task('webpack:dev', () => {
         ]
       }
     }))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(livereload());
 });
 
 gulp.task('webpack:pro', () => {
@@ -167,7 +162,13 @@ gulp.task('webpack:test', () => {
     .pipe(gulp.dest('test'));
 });
 
-gulp.task('static', () => {
+gulp.task('static:dev', () => {
+  return gulp.src(staticFiles)
+    .pipe(gulp.dest('build'))
+    .pipe(livereload());
+});
+
+gulp.task('static:pro', () => {
   return gulp.src(staticFiles)
     .pipe(gulp.dest('build'));
 });
@@ -185,17 +186,26 @@ gulp.task('client:test', ['webpack:test'], (done) => {
   }, done).start();
 });
 
-gulp.task('watch', ['build:dev', 'lint'], () => {
-  livereload.listen();
-  nodemon(nodemonOptions).on('restart', () => {
-    gulp.src('server.js')
-      .pipe(livereload());
-    console.log('restarted');
+gulp.task('nodemon', () => {
+  nodemon({
+    script: 'server.js',
+    ext: 'js',
+    ignore: ['.git', 'app/', 'bin/', 'build/', 'node_modules/', 'test/']
+  })
+  .on('restart', () => {
+    process.stdout.write('Server restarted!\n');
   });
+});
+
+gulp.task('watch', ['build:dev', 'nodemon'], () => {
+  livereload.listen();
+  gulp.watch('app/**/*.js', ['webpack:dev']);
+  gulp.watch('app/**/*.scss', ['sass:dev']);
+  gulp.watch(staticFiles, ['static:dev']);
 });
 
 gulp.task('lint', ['lint:server', 'lint:app', 'lint:test']);
 gulp.task('test', ['server:test']);
-gulp.task('build:dev', ['sass:dev', 'webpack:dev', 'static']);
-gulp.task('build:pro', ['sass:pro', 'webpack:pro', 'static']);
+gulp.task('build:dev', ['sass:dev', 'webpack:dev', 'static:dev']);
+gulp.task('build:pro', ['sass:pro', 'webpack:pro', 'static:pro']);
 gulp.task('default', ['lint', 'test']);
