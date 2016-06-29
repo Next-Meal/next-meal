@@ -26,15 +26,18 @@
 
 .logo_lg {
   position: relative;
+  left: 1.5em;
+  top: -0.5em;
   width: 20.5em;
-  z-index: 100;
   border: 1px solid $color-border;
-  margin: -1.25% 0 0 3%;
-  @media only screen and (max-width : 1200px) {
-    width: 18em;
+  background: $color-logo;
+  @media only screen and (max-width: 1000px) {
+    width: 16em;
   }
-  @media only screen and (max-width : 1000px) {
-    width: 12em;
+  @media only screen and (max-width: 550px) {
+    left: 1em;
+    top: -1em;
+    width: 10em;
   }
 }
 
