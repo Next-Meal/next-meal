@@ -7,6 +7,8 @@ footer {
     @include align-items(center);
   }
   li {
+    @include display(flex);
+    @include align-items(center);
     p {
       font-family: $font-sub;
       display: block;
@@ -24,12 +26,14 @@ footer {
     background: url(../images/footer-space-needle-icn.svg) center center no-repeat;
     position: relative;
     background-size: 100%;
-    margin-bottom: -.5em;
+    bottom: -0.5em;
   }
   img {
     width: 14em;
-    height: 7em;
     border: 1px solid $color-border;
+    @media only screen and (max-width: 550px) {
+      width: 9em;
+    }
   }
 }
 .site_map {
@@ -39,4 +43,13 @@ footer {
   font-size: 1em;
   padding-right: 1.8em;
   padding-top: 0.5em;
+  @media only screen and (max-width: 550px) {
+    padding: 0;
+    div {
+      padding: 0 1em;
+    }
+    p {
+      font-size: 0.7em;
+    }
+  }
 }
