@@ -4,7 +4,7 @@
   padding-top: 7em;
   background-image: url('../images/blue-header-city.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
   height: 34.5em;
   width: 100%;
   div {
@@ -19,13 +19,21 @@
         letter-spacing: 0.1em;
         padding: 0.5em 0 0.25em;
       }
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: 1000px) {
         font-size: 2.5em;
       }
+      @media only screen and (max-width: 550px) {
+        font-size: 1.5em;
+      }
     }
-    @media only screen and (max-width: 900px) {
-      height: 28em;
-    }
+  }
+  @media only screen and (max-width: 1000px) {
+    padding-top: 5em;
+    height: 28em;
+  }
+  @media only screen and (max-width: 550px) {
+    padding-top: 3em;
+    height: 20em;
   }
 }
 
