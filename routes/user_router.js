@@ -4,6 +4,8 @@ const TwimlResponse = require('twilio').TwimlResponse;
 
 var userRouter = module.exports = exports = Router();
 
+//hmm you seem to have two routes with the same url
+//I see a /signup in your auth router as well
 userRouter.get('/signup', (req, res) => {
   if (req.query.From) {
     var newUser = new User({ phone_number: req.query.From });

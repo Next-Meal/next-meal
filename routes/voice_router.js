@@ -1,5 +1,6 @@
 const Router = require('express').Router;
 const twilio = require('twilio');
+//I would make this Location, since it's really a constructor/model
 const location = require(__dirname + '/../models/location');
 const dayFilter = require(__dirname + '/../lib/day_filter');
 
